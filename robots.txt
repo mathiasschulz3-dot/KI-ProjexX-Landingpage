@@ -1,0 +1,48 @@
+# robots.txt für ki-projexx.de
+# KI-Beratung Hamburg, Nordheide & Norddeutschland
+
+# Alle Bots erlaubt
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://ki-projexx.de/sitemap.xml
+
+# Google Bot (explizit)
+User-agent: Googlebot
+Allow: /
+
+# Bing Bot (explizit)
+User-agent: Bingbot
+Allow: /
+
+# Yandex
+User-agent: Yandex
+Allow: /
+
+# Crawl-delay für alle Bots
+Crawl-delay: 0
+
+# Spezielle Anweisungen für Google
+User-agent: Googlebot-Image
+Allow: /
+
+# KI/AI Bots (ChatGPT, Claude, etc.)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
