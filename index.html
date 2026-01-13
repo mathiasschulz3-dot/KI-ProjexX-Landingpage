@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KI-ProjexX - AI-Powered Solutions & Consulting</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Innovative KI-Lösungen für die digitale Zukunft. Von intelligenten Apps bis zur strategischen KI-Beratung.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-blue: #2B5F7F;
-            --accent-blue: #3498db;
-            --dark-gray: #2c3e50;
-            --light-gray: #ecf0f1;
-            --white: #ffffff;
-            --gradient-start: #1a4d6b;
-            --gradient-end: #3498db;
+            /* Colors */
+            --background: 10 10 15;
+            --foreground: 250 250 252;
+            --accent: 180 100% 50%;
+            --muted: 180 5% 60%;
+            --border: 180 10% 25%;
+            --glass: rgba(20, 25, 35, 0.7);
+            
+            /* Shadows */
+            --shadow-accent: 0 0 20px hsla(180, 100%, 50%, 0.3);
+            --shadow-strong: 0 0 40px hsla(180, 100%, 50%, 0.5);
         }
 
         * {
@@ -26,103 +28,635 @@
         }
 
         body {
-            font-family: 'Outfit', -apple-system, sans-serif;
-            background: linear-gradient(135deg, #0a1929 0%, #1a2332 100%);
-            color: var(--white);
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: rgb(var(--background));
+            color: rgb(var(--foreground));
+            line-height: 1.6;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Animated background particles */
-        .particles {
+        /* Background grid pattern */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
             pointer-events: none;
             z-index: 0;
         }
 
-        .particle {
-            position: absolute;
-            background: var(--accent-blue);
-            opacity: 0.1;
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
+        /* Background gradient orbs */
+        body::after {
+            content: '';
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, hsla(180, 100%, 50%, 0.15) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
         }
 
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(100px, -100px) scale(1.2); }
-            66% { transform: translate(-50px, 100px) scale(0.8); }
+            33% { transform: translate(-50px, 100px) scale(1.1); }
+            66% { transform: translate(50px, -50px) scale(0.9); }
         }
 
+        /* Container */
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1rem;
             position: relative;
             z-index: 1;
         }
 
-        /* Header */
-        header {
-            padding: 2rem 0;
-            position: relative;
+        /* Monospace text */
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
         }
 
-        .logo-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
+        /* Glass card effect */
+        .glass-card {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 1rem;
+            transition: all 0.3s ease;
         }
 
-        .logo-text {
-            font-family: 'Space Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--accent-blue), #5dade2);
+        .glass-card:hover {
+            border-color: hsl(var(--accent));
+            box-shadow: var(--shadow-accent);
+            transform: translateY(-4px);
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, hsl(var(--accent)), hsl(200, 100%, 70%));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -1px;
         }
 
-        .tagline {
-            text-align: center;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.7);
-            font-weight: 300;
-            letter-spacing: 2px;
+        /* Status dot */
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: hsl(var(--accent));
+            border-radius: 50%;
+            box-shadow: 0 0 10px hsl(var(--accent)), 0 0 20px hsl(var(--accent));
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Header */
+        header {
+            padding: 2rem 1rem;
+            animation: fadeInDown 0.6s ease;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid hsl(var(--accent));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .logo-icon::before {
+            content: 'KI';
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: hsl(var(--accent));
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .logo-subtitle {
+            font-size: 0.625rem;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
+            color: hsl(var(--accent));
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* Hero Section */
         .hero {
-            padding: 4rem 0 6rem;
+            padding: 4rem 1rem;
             text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .hero-status {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .hero-status-text {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: hsl(var(--accent));
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: clamp(2rem, 5vw, 3.75rem);
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #ffffff, #a8d8f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease;
+            animation: fadeInUp 0.7s ease 0.2s both;
         }
 
         .hero-subtitle {
-            font-size: 1.5rem;
-            color: rgba(255, 255, 255, 0.8);
+            font-size: clamp(1rem, 3vw, 1.25rem);
+            color: hsl(var(--muted));
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 0.7s ease 0.4s both;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2.5rem;
+            animation: fadeInUp 0.5s ease 0.6s both;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 700;
+            color: hsl(var(--accent));
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: hsl(var(--muted));
+            margin-top: 0.25rem;
+        }
+
+        /* Section Header */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-header-line {
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, hsla(180, 100%, 50%, 0.3), transparent);
+        }
+
+        .section-header-text {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            color: hsl(var(--accent));
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: hsl(var(--muted));
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
             margin-bottom: 3rem;
-            font-weight: 300;
-            animation: fadeInUp 1s ease 0.2s both;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services Grid */
+        .services-section {
+            padding: 4rem 1rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            padding: 1.5rem;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            background: rgba(0, 255, 255, 0.2);
+            box-shadow: var(--shadow-accent);
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: hsl(var(--accent));
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+
+        .service-description {
+            color: hsl(var(--muted));
+            font-size: 0.875rem;
+            line-height: 1.6;
+        }
+
+        /* Projects Section */
+        .projects-section {
+            padding: 4rem 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            padding: 2rem;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .project-card:hover::before {
+            left: 100%;
+        }
+
+        .project-icon-box {
+            width: 64px;
+            height: 64px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover .project-icon-box {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: hsl(var(--accent));
+            box-shadow: var(--shadow-accent);
+            transform: scale(1.05);
+        }
+
+        .project-icon-svg {
+            width: 32px;
+            height: 32px;
+            stroke: hsl(var(--accent));
+        }
+
+        .project-title-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: hsl(var(--accent));
+            transition: color 0.3s ease;
+        }
+
+        .project-card:hover .project-title {
+            color: hsl(var(--accent));
+            filter: brightness(1.2);
+        }
+
+        .external-link-icon {
+            width: 16px;
+            height: 16px;
+            stroke: hsl(var(--muted));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-card:hover .external-link-icon {
+            opacity: 1;
+        }
+
+        .project-domain {
+            font-size: 0.875rem;
+            color: hsl(var(--muted));
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: hsl(var(--muted));
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .project-features {
+            list-style: none;
+        }
+
+        .project-features li {
+            padding: 0.5rem 0;
+            color: hsl(var(--muted));
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chevron-icon {
+            width: 12px;
+            height: 12px;
+            stroke: hsl(var(--accent));
+            flex-shrink: 0;
+        }
+
+        /* Scan line effect */
+        .scan-line {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent, 
+                hsl(var(--accent)), 
+                transparent
+            );
+            animation: scan 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .project-card:hover .scan-line {
+            animation-play-state: running;
+        }
+
+        @keyframes scan {
+            0% {
+                top: -100%;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                top: 100%;
+                opacity: 0;
+            }
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 4rem 1rem;
+        }
+
+        .cta-box {
+            max-width: 800px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 100, 100, 0.1));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 1.5rem;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .cta-description {
+            color: hsl(var(--muted));
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, hsl(var(--accent)), hsl(200, 100%, 60%));
+            color: rgb(10, 10, 15);
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px hsla(180, 100%, 50%, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px hsla(180, 100%, 50%, 0.5);
+        }
+
+        /* Footer */
+        footer {
+            padding: 2.5rem 1rem;
+            border-top: 1px solid rgba(0, 255, 255, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links a {
+            color: hsl(var(--muted));
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: hsl(var(--accent));
+        }
+
+        .footer-copyright {
+            font-size: 0.875rem;
+            color: hsl(var(--muted));
+            text-align: center;
+        }
+
+        .footer-divider {
+            color: hsl(var(--muted));
+            opacity: 0.5;
+        }
+
+        .impressum-link {
+            color: hsl(var(--muted));
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .impressum-link:hover {
+            color: hsl(var(--accent));
+        }
+
+        /* Impressum Section */
+        .impressum-section {
+            max-width: 600px;
+            margin: 3rem auto 0;
+            padding: 2rem;
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+
+        .impressum-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: hsl(var(--accent));
+        }
+
+        .impressum-content {
+            color: hsl(var(--muted));
+            font-size: 0.875rem;
+            line-height: 1.8;
+        }
+
+        .impressum-content p {
+            margin-bottom: 0.5rem;
+        }
+
+        .impressum-content strong {
+            color: rgb(var(--foreground));
+            font-weight: 600;
+        }
+
+        .impressum-email {
+            margin-top: 1rem;
+        }
+
+        .email-protected {
+            color: hsl(var(--accent));
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        .spam-protect {
+            /* HTML entities für Spam-Schutz */
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         @keyframes fadeInUp {
@@ -136,481 +670,446 @@
             }
         }
 
-        /* Projects Grid */
-        .projects-section {
-            padding: 4rem 0;
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        .section-title {
-            font-size: 2.5rem;
-            text-align: center;
-            margin-bottom: 3rem;
-            font-weight: 600;
-            position: relative;
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
         }
 
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--accent-blue), transparent);
-            margin: 1rem auto 0;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .project-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            padding: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s ease;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(52, 152, 219, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-
-        .project-card:hover::before {
-            left: 100%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 20px 40px rgba(52, 152, 219, 0.2);
-        }
-
-        .project-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--accent-blue);
-        }
-
-        .project-domain {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
-            margin-bottom: 1rem;
-            font-family: 'Space Mono', monospace;
-        }
-
-        .project-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-features {
-            list-style: none;
-            padding: 0;
-        }
-
-        .project-features li {
-            padding: 0.5rem 0;
-            color: rgba(255, 255, 255, 0.7);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .project-features li::before {
-            content: '▹';
-            color: var(--accent-blue);
-            font-weight: bold;
-        }
-
-        /* Services Section */
-        .services-section {
-            padding: 4rem 0;
-            background: rgba(255, 255, 255, 0.02);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .service-card {
-            background: rgba(52, 152, 219, 0.1);
-            border-radius: 15px;
-            padding: 2rem;
-            border-left: 4px solid var(--accent-blue);
-            transition: all 0.3s ease;
-        }
-
-        .service-card:hover {
-            background: rgba(52, 152, 219, 0.15);
-            transform: translateX(10px);
-        }
-
-        .service-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .service-description {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.6;
-        }
-
-        /* CTA Section */
-        .cta-section {
-            padding: 6rem 0;
-            text-align: center;
-        }
-
-        .cta-box {
-            background: linear-gradient(135deg, rgba(52, 152, 219, 0.2), rgba(26, 77, 107, 0.2));
-            border-radius: 20px;
-            padding: 4rem 2rem;
-            border: 1px solid rgba(52, 152, 219, 0.3);
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .cta-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        .cta-subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 2rem;
-        }
-
-        .btn-primary {
-            display: inline-block;
-            padding: 1.2rem 3rem;
-            background: linear-gradient(135deg, var(--accent-blue), #5dade2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 10px 30px rgba(52, 152, 219, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 40px rgba(52, 152, 219, 0.4);
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.6);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Calendly iframe styling */
-        .calendly-container {
-            margin: 3rem 0;
-            border-radius: 15px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero {
+                padding: 2rem 1rem;
             }
 
-            .hero-subtitle {
-                font-size: 1.2rem;
+            .hero-stats {
+                gap: 1.5rem;
             }
 
+            .services-grid,
             .projects-grid {
                 grid-template-columns: 1fr;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .section-header-text {
+                font-size: 0.625rem;
             }
 
-            .cta-title {
-                font-size: 2rem;
+            .footer-content {
+                flex-direction: column;
             }
         }
 
-        /* Scroll animations */
-        .fade-in {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease forwards;
+        @media (min-width: 769px) {
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+            }
         }
-
-        .delay-1 { animation-delay: 0.1s; }
-        .delay-2 { animation-delay: 0.2s; }
-        .delay-3 { animation-delay: 0.3s; }
-        .delay-4 { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <div class="particles" id="particles"></div>
-    
-    <div id="root"></div>
-
-    <script type="text/babel">
-        const { useState, useEffect } = React;
-
-        function LandingPage() {
-            const [isVisible, setIsVisible] = useState(false);
-
-            useEffect(() => {
-                setIsVisible(true);
-                createParticles();
-            }, []);
-
-            const createParticles = () => {
-                const container = document.getElementById('particles');
-                for (let i = 0; i < 20; i++) {
-                    const particle = document.createElement('div');
-                    particle.className = 'particle';
-                    particle.style.width = Math.random() * 100 + 50 + 'px';
-                    particle.style.height = particle.style.width;
-                    particle.style.left = Math.random() * 100 + '%';
-                    particle.style.top = Math.random() * 100 + '%';
-                    particle.style.animationDelay = Math.random() * 20 + 's';
-                    particle.style.animationDuration = Math.random() * 20 + 20 + 's';
-                    container.appendChild(particle);
-                }
-            };
-
-            const projects = [
-                {
-                    icon: '🚗',
-                    title: 'CheckCar',
-                    domain: 'checkcar.app',
-                    description: 'KI-gestützte Gebrauchtwagen-Checkliste für sicheren Fahrzeugkauf',
-                    features: [
-                        'Automatische Foto-Analyse',
-                        'KFZ-Schein Auswertung',
-                        'Risikobewertung & Empfehlungen',
-                        'Professionelle Checklisten'
-                    ],
-                    link: 'https://checkcar.app'
-                },
-                {
-                    icon: '🐕',
-                    title: 'FragAlly',
-                    domain: 'fragally.de',
-                    description: 'Umfassendes Hundekrankheiten-Lexikon mit KI-Unterstützung',
-                    features: [
-                        'Informationen zu 46 Krankheiten',
-                        'Symptome & Behandlung',
-                        'KI-gestützte Beratung',
-                        'Ersetzt nicht den Tierarzt'
-                    ],
-                    link: 'https://fragally.de'
-                },
-                {
-                    icon: '🏠',
-                    title: 'Grundrissratgeber',
-                    domain: 'grundrissratgeber.de',
-                    description: 'Intelligente Grundrissplanung und -optimierung',
-                    features: [
-                        'KI-basierte Analyse',
-                        'Optimierungsvorschläge',
-                        'Raumplanung',
-                        'Expertentipps'
-                    ],
-                    link: 'https://grundrissratgeber.de'
-                }
-            ];
-
-            const services = [
-                {
-                    icon: '💬',
-                    title: 'KI in Kommunikation',
-                    description: 'Optimieren Sie Ihre interne und externe Kommunikation mit maßgeschneiderten KI-Lösungen. Von automatisierten Antworten bis zu intelligenten Chatbots.'
-                },
-                {
-                    icon: '📈',
-                    title: 'KI im Marketing',
-                    description: 'Steigern Sie Ihre Marketing-Effizienz mit KI-gestützten Tools. Content-Generierung, Zielgruppen-Analyse und personalisierte Kampagnen.'
-                },
-                {
-                    icon: '⚙️',
-                    title: 'Prozessoptimierung',
-                    description: 'Identifizieren und automatisieren Sie zeitintensive Prozesse. Steigern Sie Effizienz und reduzieren Sie Kosten durch intelligente Automation.'
-                },
-                {
-                    icon: '🎯',
-                    title: 'KI Readiness Assessment',
-                    description: 'Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation.'
-                },
-                {
-                    icon: '🎤',
-                    title: 'Events & Speaker',
-                    description: 'Keynotes mit Substanz. Workshops mit Wirkung. Bühnenauftritte, die Impulse setzen und Teams in Bewegung bringen.'
-                }
-            ];
-
-            return (
-                <div>
-                    <header>
-                        <div className="container">
-                            <div className="logo-section">
-                                <div className="logo-text">KI-ProjexX</div>
-                            </div>
-                            <div className="tagline">AI-Powered Solutions & Consulting</div>
-                        </div>
-                    </header>
-
-                    <section className="hero">
-                        <div className="container">
-                            <h1>Innovative KI-Lösungen für die digitale Zukunft</h1>
-                            <p className="hero-subtitle">
-                                Von intelligenten Apps bis zur strategischen KI-Beratung – 
-                                Wir bringen künstliche Intelligenz in Ihr Unternehmen
-                            </p>
-                        </div>
-                    </section>
-
-                    <section className="projects-section">
-                        <div className="container">
-                            <h2 className="section-title">Unsere ProjexX</h2>
-                            <div className="projects-grid">
-                                {projects.map((project, index) => (
-                                    <div 
-                                        key={index} 
-                                        className={`project-card fade-in delay-${index + 1}`}
-                                        onClick={() => window.open(project.link, '_blank')}
-                                    >
-                                        <div className="project-icon">{project.icon}</div>
-                                        <h3 className="project-title">{project.title}</h3>
-                                        <div className="project-domain">{project.domain}</div>
-                                        <p className="project-description">{project.description}</p>
-                                        <ul className="project-features">
-                                            {project.features.map((feature, idx) => (
-                                                <li key={idx}>{feature}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="services-section">
-                        <div className="container">
-                            <h2 className="section-title">Beratung & Workshops</h2>
-                            <div className="services-grid">
-                                {services.map((service, index) => (
-                                    <div key={index} className={`service-card fade-in delay-${index + 1}`}>
-                                        <h3 className="service-title">
-                                            <span>{service.icon}</span>
-                                            {service.title}
-                                        </h3>
-                                        <p className="service-description">{service.description}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    <section className="cta-section">
-                        <div className="container">
-                            <div className="cta-box">
-                                <h2 className="cta-title">Bereit für Ihre KI-Transformation?</h2>
-                                <p className="cta-subtitle">
-                                    Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, 
-                                    wie KI Ihr Business auf das nächste Level bringen kann
-                                </p>
-                                
-                                {/* Calendly Integration */}
-                                <a 
-                                    href="https://calendly.com/mathias-schulz3/neues-meeting" 
-                                    className="btn-primary"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    Termin vereinbaren
-                                </a>
-                                
-                                {/* Alternative: Inline Calendly Widget 
-                                Entfernen Sie die Kommentare unten, um ein Inline-Widget anzuzeigen:
-                                <div className="calendly-container">
-                                    <iframe 
-                                        src="https://calendly.com/IHREN-LINK-HIER-EINFUEGEN" 
-                                        width="100%" 
-                                        height="700" 
-                                        frameBorder="0"
-                                    ></iframe>
-                                </div>
-                                */}
-                            </div>
-                        </div>
-                    </section>
-
-                    <footer>
-                        <div className="container">
-                            <div className="footer-links">
-                                <a href="https://checkcar.app">CheckCar</a>
-                                <a href="https://fragally.de">FragAlly</a>
-                                <a href="https://grundrissratgeber.de">Grundrissratgeber</a>
-                            </div>
-                            <p>&copy; 2026 KI-ProjexX.de - Alle Rechte vorbehalten</p>
-                        </div>
-                    </footer>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">
+                    <div class="logo-title">KI-<span class="gradient-text">ProjexX</span></div>
+                    <div class="logo-subtitle">AI SOLUTIONS</div>
                 </div>
-            );
-        }
+            </a>
+        </div>
+    </header>
 
-        ReactDOM.render(<LandingPage />, document.getElementById('root'));
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-status">
+            <div class="status-dot"></div>
+            <span class="hero-status-text mono">System Online • Neural Networks Active</span>
+        </div>
+
+        <h1>
+            Innovative <span class="gradient-text">KI-Lösungen</span><br>
+            für die digitale Zukunft
+        </h1>
+
+        <p class="hero-subtitle">
+            Andere reden über KI. Wir machen sie zum Wachstumsmotor Ihres Unternehmens.
+        </p>
+
+        <div class="hero-stats">
+            <div class="stat">
+                <div class="stat-value">20+</div>
+                <div class="stat-label">Jahre Erfahrung</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">∞</div>
+                <div class="stat-label">Möglichkeiten</div>
+            </div>
+            <div class="stat">
+                <div class="stat-value">24/7</div>
+                <div class="stat-label">AI Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section - MOVED UP -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box reveal">
+                <h2 class="cta-title">Bereit für Ihre KI-Transformation?</h2>
+                <p class="cta-description">
+                    Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, wie KI Ihr Business auf das nächste Level bringen kann
+                </p>
+                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">
+                    Termin vereinbaren
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-header-line"></div>
+                <span class="section-header-text mono">&lt; Services /&gt;</span>
+                <div class="section-header-line"></div>
+            </div>
+
+            <h2 class="section-title reveal">Beratung & Workshops</h2>
+            <p class="section-subtitle reveal mono">// Maßgeschneiderte KI-Beratung für Ihren Erfolg</p>
+
+            <div class="services-grid">
+                <div class="glass-card service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">KI in Kommunikation</h3>
+                    </div>
+                    <p class="service-description">
+                        Optimieren Sie Ihre interne und externe Kommunikation mit maßgeschneiderten KI-Lösungen. Von automatisierten Antworten bis zu intelligenten Chatbots.
+                    </p>
+                </div>
+
+                <div class="glass-card service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+                                <path d="M17 6h6v6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">KI im Marketing</h3>
+                    </div>
+                    <p class="service-description">
+                        Steigern Sie Ihre Marketing-Effizienz mit KI-gestützten Tools. Content-Generierung, Zielgruppen-Analyse und personalisierte Kampagnen.
+                    </p>
+                </div>
+
+                <div class="glass-card service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <path d="M12 16v-4M12 8h.01"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">KI Readiness Assessment</h3>
+                    </div>
+                    <p class="service-description">
+                        Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation.
+                    </p>
+                </div>
+
+                <div class="glass-card service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Events & Speaker</h3>
+                    </div>
+                    <p class="service-description">
+                        Keynotes, die hängen bleiben. Workshops, die wirken. Inspirierende Bühnenauftritte, die Teams motivieren und neue Perspektiven eröffnen.
+                    </p>
+                </div>
+
+                <div class="glass-card service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <circle cx="12" cy="12" r="3"></circle>
+                                <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6m-13.36.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Prozessoptimierung</h3>
+                    </div>
+                    <p class="service-description">
+                        Identifizieren und automatisieren Sie zeitintensive Prozesse. Steigern Sie Effizienz und reduzieren Sie Kosten durch intelligente Automation.
+                    </p>
+                </div>
+
+                <div class="glass-card service-card reveal">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M12 2a10 10 0 0 1 7.38 16.75l-8.63.13a.5.5 0 0 1-.37-.16L3 11.37a.5.5 0 0 1 .13-.74L12 2z"></path>
+                                <path d="M9 21h6M12 17v4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">KI Workshops – EU AI Act</h3>
+                    </div>
+                    <p class="service-description">
+                        Bereiten Sie Ihr Unternehmen auf den EU AI Act vor. Compliance-Workshops, Risikobewertung und praktische Umsetzungsstrategien für die neue KI-Verordnung.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <div class="section-header reveal">
+                <div class="section-header-line"></div>
+                <span class="section-header-text mono">&lt; ProjexX /&gt;</span>
+                <div class="section-header-line"></div>
+            </div>
+
+            <h2 class="section-title reveal">Unsere Projekte</h2>
+
+            <div class="projects-grid">
+                <div class="glass-card project-card reveal" onclick="window.open('https://checkcar.app', '_blank')">
+                    <div class="project-icon-box">
+                        <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
+                            <circle cx="6.5" cy="16.5" r="2.5"></circle>
+                            <circle cx="16.5" cy="16.5" r="2.5"></circle>
+                        </svg>
+                    </div>
+                    <div class="project-title-wrapper">
+                        <h3 class="project-title">CheckCar</h3>
+                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div class="project-domain">checkcar.app</div>
+                    <p class="project-description">
+                        KI-gestützte Gebrauchtwagen-Checkliste für sicheren Fahrzeugkauf
+                    </p>
+                    <ul class="project-features">
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Automatische Foto-Analyse
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            KFZ-Schein Auswertung
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Risikobewertung & Empfehlungen
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Professionelle Checklisten
+                        </li>
+                    </ul>
+                    <div class="scan-line"></div>
+                </div>
+
+                <div class="glass-card project-card reveal" onclick="window.open('https://fragally.de', '_blank')">
+                    <div class="project-icon-box">
+                        <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </div>
+                    <div class="project-title-wrapper">
+                        <h3 class="project-title">FragAlly</h3>
+                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div class="project-domain">fragally.de</div>
+                    <p class="project-description">
+                        Umfassendes Hundekrankheiten-Lexikon mit KI-Unterstützung
+                    </p>
+                    <ul class="project-features">
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Informationen zu 46 Krankheiten
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Symptome & Behandlung
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            KI-gestützte Beratung
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Ersetzt nicht den Tierarzt
+                        </li>
+                    </ul>
+                    <div class="scan-line"></div>
+                </div>
+
+                <div class="glass-card project-card reveal" onclick="window.open('https://grundrissratgeber.de', '_blank')">
+                    <div class="project-icon-box">
+                        <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="3" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="3" width="7" height="7"></rect>
+                            <rect x="14" y="14" width="7" height="7"></rect>
+                            <rect x="3" y="14" width="7" height="7"></rect>
+                        </svg>
+                    </div>
+                    <div class="project-title-wrapper">
+                        <h3 class="project-title">Grundrissratgeber</h3>
+                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                            <polyline points="15 3 21 3 21 9"></polyline>
+                            <line x1="10" y1="14" x2="21" y2="3"></line>
+                        </svg>
+                    </div>
+                    <div class="project-domain">grundrissratgeber.de</div>
+                    <p class="project-description">
+                        Intelligente Grundrissplanung und -optimierung
+                    </p>
+                    <ul class="project-features">
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            KI-basierte Analyse
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Optimierungsvorschläge
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Raumplanung
+                        </li>
+                        <li>
+                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="9 18 15 12 9 6"></polyline>
+                            </svg>
+                            Expertentipps
+                        </li>
+                    </ul>
+                    <div class="scan-line"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-links">
+                    <a href="https://checkcar.app" target="_blank" rel="noopener noreferrer">CheckCar</a>
+                    <a href="https://fragally.de" target="_blank" rel="noopener noreferrer">FragAlly</a>
+                    <a href="https://grundrissratgeber.de" target="_blank" rel="noopener noreferrer">Grundrissratgeber</a>
+                    <span class="footer-divider">|</span>
+                    <a href="#impressum" class="impressum-link">Impressum</a>
+                </div>
+                <p class="footer-copyright">
+                    © 2026 KI-ProjexX.de - Alle Rechte vorbehalten
+                </p>
+            </div>
+            
+            <!-- Impressum Section -->
+            <div id="impressum" class="impressum-section">
+                <h3 class="impressum-title">Impressum</h3>
+                <div class="impressum-content">
+                    <p><strong>KI-ProjexX</strong></p>
+                    <p>Mathias Schulz</p>
+                    <p>Haidbarg 30B</p>
+                    <p>21244 Buchholz</p>
+                    <p>Deutschland</p>
+                    <p class="impressum-email">
+                        E-Mail: <span class="email-protected">mail<span class="spam-protect">&#64;</span>ki-projexx<span class="spam-protect">&#46;</span>de</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll Reveal Script -->
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with reveal class
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
+        });
+
+        // Add cursor pointer to project cards
+        document.querySelectorAll('.project-card').forEach(card => {
+            card.style.cursor = 'pointer';
+        });
     </script>
 </body>
 </html>
