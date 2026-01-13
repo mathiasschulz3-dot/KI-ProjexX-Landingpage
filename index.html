@@ -5,27 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KI-ProjexX - AI-Powered Solutions & Consulting</title>
     <meta name="description" content="Innovative KI-Lösungen für die digitale Zukunft. Von intelligenten Apps bis zur strategischen KI-Beratung.">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CBJQ2Y0CS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3CBJQ2Y0CS');
+      
+      // Custom Event Tracking Functions
+      function trackCalendlyClick() {
+          gtag('event', 'calendly_click', {
+              'event_category': 'conversion',
+              'event_label': 'cta_button_click',
+              'value': 1
+          });
+          console.log('📊 GA4 Event: calendly_click');
+      }
+      
+      function trackServiceClick(serviceName) {
+          gtag('event', 'service_click', {
+              'event_category': 'engagement',
+              'event_label': serviceName,
+              'service_name': serviceName
+          });
+          console.log('📊 GA4 Event: service_click -', serviceName);
+      }
+      
+      function trackProjectClick(projectName, projectUrl) {
+          gtag('event', 'project_click', {
+              'event_category': 'engagement',
+              'event_label': projectName,
+              'project_name': projectName,
+              'project_url': projectUrl
+          });
+          console.log('📊 GA4 Event: project_click -', projectName);
+      }
+      
+      function trackExternalLink(linkUrl, linkText) {
+          gtag('event', 'external_link_click', {
+              'event_category': 'navigation',
+              'event_label': linkText,
+              'link_url': linkUrl
+          });
+          console.log('📊 GA4 Event: external_link_click -', linkUrl);
+      }
+      
+      function trackImpressumView() {
+          gtag('event', 'impressum_view', {
+              'event_category': 'navigation',
+              'event_label': 'footer_impressum_click'
+          });
+          console.log('📊 GA4 Event: impressum_view');
+      }
+      
+      function trackHeroStatsView() {
+          gtag('event', 'hero_stats_view', {
+              'event_category': 'engagement',
+              'event_label': 'stats_section_viewed'
+          });
+          console.log('📊 GA4 Event: hero_stats_view');
+      }
+      
+      let scrollDepthTracked = { '25': false, '50': false, '75': false, '100': false };
+      
+      function trackScrollDepth() {
+          const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+          
+          if (scrollPercent >= 25 && !scrollDepthTracked['25']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '25_percent',
+                  'scroll_percent': 25
+              });
+              scrollDepthTracked['25'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 25%');
+          }
+          
+          if (scrollPercent >= 50 && !scrollDepthTracked['50']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '50_percent',
+                  'scroll_percent': 50
+              });
+              scrollDepthTracked['50'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 50%');
+          }
+          
+          if (scrollPercent >= 75 && !scrollDepthTracked['75']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '75_percent',
+                  'scroll_percent': 75
+              });
+              scrollDepthTracked['75'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 75%');
+          }
+          
+          if (scrollPercent >= 100 && !scrollDepthTracked['100']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '100_percent',
+                  'scroll_percent': 100
+              });
+              scrollDepthTracked['100'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 100%');
+          }
+      }
+      
+      if (typeof window !== 'undefined') {
+          window.addEventListener('scroll', trackScrollDepth);
+      }
+    </script>
+    <!-- End Google Analytics -->
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colors */
             --background: 10 10 15;
             --foreground: 250 250 252;
             --accent: 180 100% 50%;
             --muted: 180 5% 60%;
             --border: 180 10% 25%;
             --glass: rgba(20, 25, 35, 0.7);
-            
-            /* Shadows */
             --shadow-accent: 0 0 20px hsla(180, 100%, 50%, 0.3);
             --shadow-strong: 0 0 40px hsla(180, 100%, 50%, 0.5);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -36,7 +144,6 @@
             position: relative;
         }
 
-        /* Background grid pattern */
         body::before {
             content: '';
             position: fixed;
@@ -52,7 +159,6 @@
             z-index: 0;
         }
 
-        /* Background gradient orbs */
         body::after {
             content: '';
             position: fixed;
@@ -72,7 +178,6 @@
             66% { transform: translate(50px, -50px) scale(0.9); }
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -81,12 +186,8 @@
             z-index: 1;
         }
 
-        /* Monospace text */
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Glass card effect */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(10px);
@@ -101,7 +202,6 @@
             transform: translateY(-4px);
         }
 
-        /* Gradient text */
         .gradient-text {
             background: linear-gradient(135deg, hsl(var(--accent)), hsl(200, 100%, 70%));
             -webkit-background-clip: text;
@@ -109,7 +209,6 @@
             background-clip: text;
         }
 
-        /* Status dot */
         .status-dot {
             width: 8px;
             height: 8px;
@@ -124,7 +223,6 @@
             50% { opacity: 0.5; }
         }
 
-        /* Header */
         header {
             padding: 2rem 1rem;
             animation: fadeInDown 0.6s ease;
@@ -178,7 +276,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Hero Section */
         .hero {
             padding: 4rem 1rem;
             text-align: center;
@@ -245,7 +342,6 @@
             margin-top: 0.25rem;
         }
 
-        /* Section Header */
         .section-header {
             display: flex;
             align-items: center;
@@ -267,7 +363,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Section Title */
         .section-title {
             font-size: clamp(1.75rem, 4vw, 2.5rem);
             font-weight: 700;
@@ -286,10 +381,7 @@
             margin-right: auto;
         }
 
-        /* Services Grid */
-        .services-section {
-            padding: 4rem 1rem;
-        }
+        .services-section { padding: 4rem 1rem; }
 
         .services-grid {
             display: grid;
@@ -301,6 +393,7 @@
 
         .service-card {
             padding: 1.5rem;
+            cursor: pointer;
         }
 
         .service-icon {
@@ -345,10 +438,7 @@
             line-height: 1.6;
         }
 
-        /* Projects Section */
-        .projects-section {
-            padding: 4rem 1rem;
-        }
+        .projects-section { padding: 4rem 1rem; }
 
         .projects-grid {
             display: grid;
@@ -421,7 +511,6 @@
         }
 
         .project-card:hover .project-title {
-            color: hsl(var(--accent));
             filter: brightness(1.2);
         }
 
@@ -470,18 +559,13 @@
             flex-shrink: 0;
         }
 
-        /* Scan line effect */
         .scan-line {
             position: absolute;
             top: -100%;
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                hsl(var(--accent)), 
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, hsl(var(--accent)), transparent);
             animation: scan 3s ease-in-out infinite;
             pointer-events: none;
         }
@@ -491,23 +575,12 @@
         }
 
         @keyframes scan {
-            0% {
-                top: -100%;
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
+            0% { top: -100%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 4rem 1rem;
-        }
+        .cta-section { padding: 4rem 1rem; }
 
         .cta-box {
             max-width: 800px;
@@ -552,7 +625,6 @@
             box-shadow: 0 8px 30px hsla(180, 100%, 50%, 0.5);
         }
 
-        /* Footer */
         footer {
             padding: 2.5rem 1rem;
             border-top: 1px solid rgba(0, 255, 255, 0.1);
@@ -607,7 +679,6 @@
             color: hsl(var(--accent));
         }
 
-        /* Impressum Section */
         .impressum-section {
             max-width: 600px;
             margin: 3rem auto 0;
@@ -649,11 +720,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .spam-protect {
-            /* HTML entities für Spam-Schutz */
-        }
-
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -681,7 +747,6 @@
             }
         }
 
-        /* Scroll reveal */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -693,7 +758,6 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero {
                 padding: 2rem 1rem;
@@ -726,7 +790,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <a href="#" class="logo">
@@ -739,7 +802,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-status">
             <div class="status-dot"></div>
@@ -771,7 +833,6 @@
         </div>
     </section>
 
-    <!-- CTA Section - MOVED UP -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-box reveal">
@@ -779,14 +840,13 @@
                 <p class="cta-description">
                     Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, wie KI Ihr Business auf das nächste Level bringen kann
                 </p>
-                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();">
                     Termin vereinbaren
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services-section">
         <div class="container">
             <div class="section-header reveal">
@@ -799,7 +859,7 @@
             <p class="section-subtitle reveal mono">// Maßgeschneiderte KI-Beratung für Ihren Erfolg</p>
 
             <div class="services-grid">
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in Kommunikation');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -813,7 +873,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI im Marketing');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -828,7 +888,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Readiness Assessment');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -843,7 +903,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('Events & Speaker');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -858,7 +918,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('Prozessoptimierung');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -873,7 +933,7 @@
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Workshops EU AI Act');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -891,7 +951,6 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section class="projects-section">
         <div class="container">
             <div class="section-header reveal">
@@ -903,7 +962,7 @@
             <h2 class="section-title reveal">Unsere Projekte</h2>
 
             <div class="projects-grid">
-                <div class="glass-card project-card reveal" onclick="window.open('https://checkcar.app', '_blank')">
+                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('CheckCar', 'https://checkcar.app'); window.open('https://checkcar.app', '_blank');">
                     <div class="project-icon-box">
                         <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
@@ -952,7 +1011,7 @@
                     <div class="scan-line"></div>
                 </div>
 
-                <div class="glass-card project-card reveal" onclick="window.open('https://fragally.de', '_blank')">
+                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('FragAlly', 'https://fragally.de'); window.open('https://fragally.de', '_blank');">
                     <div class="project-icon-box">
                         <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -999,7 +1058,7 @@
                     <div class="scan-line"></div>
                 </div>
 
-                <div class="glass-card project-card reveal" onclick="window.open('https://grundrissratgeber.de', '_blank')">
+                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('Grundrissratgeber', 'https://grundrissratgeber.de'); window.open('https://grundrissratgeber.de', '_blank');">
                     <div class="project-icon-box">
                         <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="3" y="3" width="7" height="7"></rect>
@@ -1052,23 +1111,21 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="https://checkcar.app" target="_blank" rel="noopener noreferrer">CheckCar</a>
-                    <a href="https://fragally.de" target="_blank" rel="noopener noreferrer">FragAlly</a>
-                    <a href="https://grundrissratgeber.de" target="_blank" rel="noopener noreferrer">Grundrissratgeber</a>
+                    <a href="https://checkcar.app" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://checkcar.app', 'CheckCar Footer');">CheckCar</a>
+                    <a href="https://fragally.de" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://fragally.de', 'FragAlly Footer');">FragAlly</a>
+                    <a href="https://grundrissratgeber.de" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://grundrissratgeber.de', 'Grundrissratgeber Footer');">Grundrissratgeber</a>
                     <span class="footer-divider">|</span>
-                    <a href="#impressum" class="impressum-link">Impressum</a>
+                    <a href="#impressum" class="impressum-link" onclick="if (typeof trackImpressumView !== 'undefined') trackImpressumView();">Impressum</a>
                 </div>
                 <p class="footer-copyright">
                     © 2026 KI-ProjexX.de - Alle Rechte vorbehalten
                 </p>
             </div>
             
-            <!-- Impressum Section -->
             <div id="impressum" class="impressum-section">
                 <h3 class="impressum-title">Impressum</h3>
                 <div class="impressum-content">
@@ -1085,9 +1142,7 @@
         </div>
     </footer>
 
-    <!-- Scroll Reveal Script -->
     <script>
-        // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1097,16 +1152,23 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    
+                    if (entry.target.classList.contains('hero-stats') && typeof trackHeroStatsView !== 'undefined') {
+                        trackHeroStatsView();
+                    }
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with reveal class
         document.querySelectorAll('.reveal').forEach((el) => {
             observer.observe(el);
         });
+        
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            observer.observe(heroStats);
+        }
 
-        // Add cursor pointer to project cards
         document.querySelectorAll('.project-card').forEach(card => {
             card.style.cursor = 'pointer';
         });
