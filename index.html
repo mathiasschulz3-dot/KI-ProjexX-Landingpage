@@ -444,6 +444,47 @@
             animation: float 20s ease-in-out infinite;
         }
 
+        /* Animated Horizontal Glow Stripe */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                hsla(180, 100%, 50%, 0.3) 20%, 
+                hsla(180, 100%, 50%, 0.8) 50%, 
+                hsla(180, 100%, 50%, 0.3) 80%, 
+                transparent 100%
+            );
+            box-shadow: 
+                0 0 20px hsla(180, 100%, 50%, 0.8),
+                0 0 40px hsla(180, 100%, 50%, 0.5),
+                0 0 60px hsla(180, 100%, 50%, 0.3);
+            pointer-events: none;
+            z-index: 9999;
+            animation: scanLine 8s linear infinite;
+        }
+
+        @keyframes scanLine {
+            0% {
+                top: -5%;
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                top: 105%;
+                opacity: 0;
+            }
+        }
+
         @keyframes float {
             0%, 100% { transform: translate(0, 0) scale(1); }
             33% { transform: translate(-50px, 100px) scale(1.1); }
@@ -612,6 +653,34 @@
             text-align: center;
             max-width: 1000px;
             margin: 0 auto;
+            position: relative;
+        }
+
+        /* Creative Portrait Background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10%;
+            transform: translateY(-50%);
+            width: 450px;
+            height: 550px;
+            background-image: url('./M_Schulz.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            filter: grayscale(100%) contrast(1.3) brightness(1.1);
+            mask-image: radial-gradient(ellipse at center right, rgba(0,0,0,0.4) 0%, transparent 70%);
+            -webkit-mask-image: radial-gradient(ellipse at center right, rgba(0,0,0,0.4) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transition: all 0.5s ease;
+        }
+
+        .hero:hover::before {
+            opacity: 0.15;
+            transform: translateY(-50%) scale(1.03);
+            filter: grayscale(100%) contrast(1.4) brightness(1.15);
         }
 
         .hero-status {
@@ -621,6 +690,8 @@
             gap: 0.75rem;
             margin-bottom: 2rem;
             animation: fadeIn 0.5s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-status-text {
@@ -636,6 +707,8 @@
             line-height: 1.2;
             margin-bottom: 1.5rem;
             animation: fadeInUp 0.7s ease 0.2s both;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-subtitle {
@@ -644,6 +717,8 @@
             max-width: 800px;
             margin: 0 auto 2rem;
             animation: fadeInUp 0.7s ease 0.4s both;
+            position: relative;
+            z-index: 1;
         }
 
         .hero-stats {
@@ -652,6 +727,8 @@
             justify-content: center;
             gap: 2.5rem;
             animation: fadeInUp 0.5s ease 0.6s both;
+            position: relative;
+            z-index: 1;
         }
 
         .stat {
@@ -681,6 +758,8 @@
             gap: 2rem;
             margin-top: 3rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
         }
 
         .trust-badge {
@@ -707,6 +786,7 @@
             text-decoration: none;
             transition: all 0.3s ease;
             gap: 1rem;
+            color: rgb(var(--foreground));
         }
 
         .trust-badge-ihk:hover {
@@ -716,28 +796,32 @@
         }
 
         .ihk-badge-img {
-            width: 60px;
-            height: 60px;
+            width: 64px;
+            height: 64px;
             object-fit: contain;
-            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));
+            flex-shrink: 0;
+            filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 255, 255, 0.2));
         }
 
         .ihk-badge-text {
             display: flex;
             flex-direction: column;
             gap: 0.25rem;
+            text-align: left;
         }
 
         .ihk-badge-text strong {
             color: rgb(var(--foreground));
             font-size: 0.875rem;
             font-weight: 600;
+            line-height: 1.2;
         }
 
         .ihk-badge-text span {
             color: hsl(var(--accent));
             font-size: 0.75rem;
             font-family: 'JetBrains Mono', monospace;
+            line-height: 1.2;
         }
 
         .section-header {
@@ -1146,13 +1230,95 @@
 
         .impressum-link {
             color: hsl(var(--muted));
-            text-decoration: none;
+            background: none;
+            border: none;
             font-size: 0.875rem;
+            font-family: 'Inter', -apple-system, sans-serif;
+            cursor: pointer;
             transition: color 0.3s ease;
+            padding: 0;
         }
 
         .impressum-link:hover {
             color: hsl(var(--accent));
+        }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 10000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 10001;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10002;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: hsl(var(--accent));
+            transform: rotate(90deg);
+        }
+
+        .modal-close svg {
+            width: 20px;
+            height: 20px;
+            stroke: hsl(var(--accent));
         }
 
         .impressum-section {
@@ -1244,6 +1410,11 @@
                 padding: 2rem 1rem;
             }
 
+            /* Hide portrait on mobile for better readability */
+            .hero::before {
+                display: none;
+            }
+
             .hero-stats {
                 gap: 1.5rem;
             }
@@ -1277,23 +1448,36 @@
 
             .trust-badges {
                 gap: 1rem;
+                flex-direction: column;
             }
 
             .trust-badge-ihk {
                 padding: 0.75rem 1rem;
+                width: 100%;
+                max-width: 280px;
             }
 
             .ihk-badge-img {
-                width: 48px;
-                height: 48px;
+                width: 52px;
+                height: 52px;
             }
 
             .ihk-badge-text strong {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
             }
 
             .ihk-badge-text span {
-                font-size: 0.625rem;
+                font-size: 0.675rem;
+            }
+
+            .modal-content {
+                max-width: 95%;
+                max-height: 90vh;
+            }
+
+            .modal-close {
+                width: 36px;
+                height: 36px;
             }
         }
 
@@ -1370,9 +1554,11 @@
             </div>
 
             <!-- Trust Badges -->
+            <!-- WICHTIG: IHK_Badge.png muss im Root-Verzeichnis liegen! -->
+            <!-- Bei Problemen siehe DEPLOYMENT.md für alternative Lösungen -->
             <div class="trust-badges" role="list" aria-label="Vertrauensmerkmale">
                 <a href="https://badges.ihk-kompetenz.plus/assertion/faa969d7-54c2-42c2-8a49-45cc8b421fdd?id=U2FsdGVkX19O3YFifEpTv4oFcji2ocm8fZ7mXUM6fgZu8qZSTK1p2HHfCoAPEsSa" target="_blank" rel="noopener noreferrer" class="trust-badge trust-badge-ihk" role="listitem" aria-label="IHK-zertifizierter KI-Manager">
-                    <img src="/IHK_Badge.png" alt="IHK-Zertifikat: KI-Manager/-in (IHK) - IHK zu Essen" class="ihk-badge-img">
+                    <img src="./IHK_Badge.png" alt="IHK-Zertifikat: KI-Manager/-in (IHK) - IHK zu Essen" class="ihk-badge-img" loading="lazy">
                     <div class="ihk-badge-text">
                         <strong>IHK-Zertifiziert</strong>
                         <span>KI-Manager/-in (IHK)</span>
@@ -1707,15 +1893,27 @@
                     <span class="footer-divider" aria-hidden="true">|</span>
                     <a href="https://www.linkedin.com/in/mathias-schulz-191890ab/" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackLinkedInClick !== 'undefined') trackLinkedInClick();">LinkedIn</a>
                     <span class="footer-divider" aria-hidden="true">|</span>
-                    <a href="#impressum" class="impressum-link" onclick="if (typeof trackImpressumView !== 'undefined') trackImpressumView();">Impressum & Datenschutz</a>
+                    <button class="impressum-link" onclick="openImpressumModal()" aria-label="Impressum und Datenschutz öffnen">Impressum & Datenschutz</button>
                 </nav>
                 <p class="footer-copyright">
                     © 2026 KI-ProjexX.de - Alle Rechte vorbehalten
                 </p>
             </div>
-            
-            <section id="impressum" class="impressum-section" aria-labelledby="impressum-title">
-                <h3 id="impressum-title" class="impressum-title">Impressum & Datenschutz</h3>
+        </div>
+    </footer>
+
+    <!-- Impressum Modal -->
+    <div id="impressum-modal" class="modal" role="dialog" aria-labelledby="impressum-modal-title" aria-hidden="true">
+        <div class="modal-overlay" onclick="closeImpressumModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeImpressumModal()" aria-label="Modal schließen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="impressum-section">
+                <h3 id="impressum-modal-title" class="impressum-title">Impressum & Datenschutz</h3>
                 <div class="impressum-content">
                     <p><strong>Angaben gemäß § 5 TMG:</strong></p>
                     <p><strong>KI-ProjexX</strong></p>
@@ -1730,9 +1928,9 @@
                     <p><strong>Datenschutz:</strong></p>
                     <p>Diese Website verwendet Google Analytics mit aktivierter IP-Anonymisierung. Die Erfassung erfolgt nur mit Ihrer Einwilligung. Sie können Ihre Einwilligung jederzeit widerrufen.</p>
                 </div>
-            </section>
+            </div>
         </div>
-    </footer>
+    </div>
 
     <script>
         // Cookie Consent Management
@@ -1810,6 +2008,30 @@
         // Initialize on load
         document.addEventListener('DOMContentLoaded', function() {
             checkCookieConsent();
+        });
+
+        // Impressum Modal Functions
+        function openImpressumModal() {
+            const modal = document.getElementById('impressum-modal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            if (typeof trackImpressumView !== 'undefined') {
+                trackImpressumView();
+            }
+        }
+
+        function closeImpressumModal() {
+            const modal = document.getElementById('impressum-modal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on ESC key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeImpressumModal();
+            }
         });
     </script>
 </body>
