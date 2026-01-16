@@ -8,7 +8,7 @@
     <title>KI-ProjexX - KI-Beratung Hamburg, Nordheide & Lüneburger Heide | AI Marketing & Kommunikation</title>
     <meta name="title" content="KI-ProjexX - KI-Beratung Hamburg, Nordheide & Lüneburger Heide">
     <meta name="description" content="IHK-zertifizierte KI-Beratung für Marketing, Werbung & Kommunikation in Hamburg, Buchholz, Nordheide. KI-Manager (IHK) für digitale Transformation, KI-Workshops und EU AI Act Compliance in Norddeutschland.">
-    <meta name="keywords" content="KI-Beratung Hamburg, KI Berater Nordheide, KI Consulting Buchholz, AI Marketing, KI in der Werbung, KI Kommunikation, KI Workshop Lüneburger Heide, Künstliche Intelligenz 21244, KI Beratung Marketing, AI Consultant Norddeutschland, IHK-zertifiziert, KI-Manager IHK, IHK KI-Berater, KI Prozessoptimierung, zertifizierte KI-Beratung">
+    <meta name="keywords" content="KI-Beratung Hamburg, KI Berater Nordheide, KI Consulting Buchholz, AI Marketing, KI in der Werbung, KI Kommunikation, KI Workshop Lüneburger Heide, Künstliche Intelligenz 21244, KI Beratung Marketing, AI Consultant Norddeutschland, IHK-zertifiziert, KI-Manager IHK, IHK KI-Berater, zertifizierte KI-Beratung">
     <meta name="author" content="Mathias Schulz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ki-projexx.de">
@@ -410,38 +410,14 @@
         body {
             font-family: 'Inter', -apple-system, sans-serif;
             background: rgb(var(--background));
-            color: rgb(var(--foreground));
-            line-height: 1.6;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
             background-image: 
                 linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
             background-size: 50px 50px;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        body::after {
-            content: '';
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            background: radial-gradient(circle, hsla(180, 100%, 50%, 0.15) 0%, transparent 70%);
-            top: -300px;
-            right: -300px;
-            pointer-events: none;
-            z-index: 0;
-            animation: float 20s ease-in-out infinite;
+            color: rgb(var(--foreground));
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
         }
 
         /* Animated Horizontal Glow Stripe */
@@ -466,6 +442,19 @@
             pointer-events: none;
             z-index: 9999;
             animation: scanLine 8s linear infinite;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, hsla(180, 100%, 50%, 0.15) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
         }
 
         @keyframes scanLine {
@@ -661,26 +650,26 @@
             content: '';
             position: absolute;
             top: 50%;
-            right: -10%;
+            right: -8%;
             transform: translateY(-50%);
-            width: 450px;
-            height: 550px;
+            width: 480px;
+            height: 580px;
             background-image: url('./M_Schulz.png');
             background-size: cover;
             background-position: center;
-            opacity: 0.1;
-            filter: grayscale(100%) contrast(1.3) brightness(1.1);
-            mask-image: radial-gradient(ellipse at center right, rgba(0,0,0,0.4) 0%, transparent 70%);
-            -webkit-mask-image: radial-gradient(ellipse at center right, rgba(0,0,0,0.4) 0%, transparent 70%);
+            opacity: 0.18;
+            filter: grayscale(100%) contrast(1.4) brightness(1.2);
+            mask-image: radial-gradient(ellipse at center right, rgba(0,0,0,0.5) 0%, transparent 65%);
+            -webkit-mask-image: radial-gradient(ellipse at center right, rgba(0,0,0,0.5) 0%, transparent 65%);
             pointer-events: none;
             z-index: 0;
             transition: all 0.5s ease;
         }
 
         .hero:hover::before {
-            opacity: 0.15;
+            opacity: 0.25;
             transform: translateY(-50%) scale(1.03);
-            filter: grayscale(100%) contrast(1.4) brightness(1.15);
+            filter: grayscale(100%) contrast(1.5) brightness(1.3);
         }
 
         .hero-status {
