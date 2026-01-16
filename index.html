@@ -3,69 +3,297 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KI-ProjexX - AI-Powered Solutions & Consulting</title>
-    <meta name="description" content="Innovative KI-Lösungen für die digitale Zukunft. Von intelligenten Apps bis zur strategischen KI-Beratung.">
-    <meta name="keywords" content="KI-Beratung Hamburg, KI Berater Nordheide, KI Consulting Buchholz, AI Marketing, KI in der Werbung, KI Kommunikation, Prozessoptimierung, KI Workshops, EU AI Act">
+    
+    <!-- Primary Meta Tags -->
+    <title>KI-ProjexX - KI-Beratung Hamburg, Nordheide & Lüneburger Heide | AI Marketing & Kommunikation</title>
+    <meta name="title" content="KI-ProjexX - KI-Beratung Hamburg, Nordheide & Lüneburger Heide">
+    <meta name="description" content="KI-Beratung für Marketing, Werbung & Kommunikation in Hamburg, Buchholz, Nordheide. Ihr AI-Berater für digitale Transformation, KI-Workshops und EU AI Act Compliance in Norddeutschland.">
+    <meta name="keywords" content="KI-Beratung Hamburg, KI Berater Nordheide, KI Consulting Buchholz, AI Marketing, KI in der Werbung, KI Kommunikation, KI Workshop Lüneburger Heide, Künstliche Intelligenz 21244, KI Beratung Marketing, AI Consultant Norddeutschland">
     <meta name="author" content="Mathias Schulz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ki-projexx.de">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ki-projexx.de/">
-    <meta property="og:title" content="KI-ProjexX - KI-Beratung Hamburg & Nordheide | AI Marketing Spezialist">
-    <meta property="og:description" content="Innovative KI-Lösungen für Marketing, Werbung & Kommunikation in Hamburg, Buchholz und Lüneburger Heide. Spezialisiert auf AI-Transformation, Workshops und EU AI Act Compliance.">
-    <meta property="og:image" content="https://ki-projexx.de/og-image.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:locale" content="de_DE">
-    <meta property="og:site_name" content="KI-ProjexX">
-    
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ki-projexx.de/">
-    <meta property="twitter:title" content="KI-ProjexX - KI-Beratung Hamburg & Nordheide | AI Marketing Spezialist">
-    <meta property="twitter:description" content="Innovative KI-Lösungen für Marketing, Werbung & Kommunikation in Hamburg, Buchholz und Lüneburger Heide.">
-    <meta property="twitter:image" content="https://ki-projexx.de/og-image.jpg">
-    
-    <!-- Geo Tags -->
+    <!-- Geo Targeting -->
     <meta name="geo.region" content="DE-NI">
     <meta name="geo.placename" content="Buchholz in der Nordheide">
     <meta name="geo.position" content="53.3264;9.8692">
     <meta name="ICBM" content="53.3264, 9.8692">
     
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ki-projexx.de">
+    <meta property="og:title" content="KI-ProjexX - KI-Beratung Hamburg & Nordheide | AI Marketing Spezialist">
+    <meta property="og:description" content="Innovative KI-Lösungen für Marketing, Werbung & Kommunikation. Ihr AI-Berater in Hamburg, Buchholz und der Lüneburger Heide. Workshops, Consulting & EU AI Act Compliance.">
+    <meta property="og:image" content="https://ki-projexx.de/og-image.jpg">
+    <meta property="og:locale" content="de_DE">
+    <meta property="og:site_name" content="KI-ProjexX">
+    
     <!-- Mobile Optimization -->
-    <meta name="theme-color" content="#0a0a0f">
+    <meta name="theme-color" content="#00FFFF">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="KI-ProjexX">
     
     <!-- DNS Prefetch & Preconnect (Performance) -->
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CBJQ2Y0CS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-3CBJQ2Y0CS');
+      
+      // Custom Event Tracking Functions
+      function trackCalendlyClick() {
+          gtag('event', 'calendly_click', {
+              'event_category': 'conversion',
+              'event_label': 'cta_button_click',
+              'value': 1
+          });
+          console.log('📊 GA4 Event: calendly_click');
+      }
+      
+      function trackServiceClick(serviceName) {
+          gtag('event', 'service_click', {
+              'event_category': 'engagement',
+              'event_label': serviceName,
+              'service_name': serviceName
+          });
+          console.log('📊 GA4 Event: service_click -', serviceName);
+      }
+      
+      function trackProjectClick(projectName, projectUrl) {
+          gtag('event', 'project_click', {
+              'event_category': 'engagement',
+              'event_label': projectName,
+              'project_name': projectName,
+              'project_url': projectUrl
+          });
+          console.log('📊 GA4 Event: project_click -', projectName);
+      }
+      
+      function trackExternalLink(linkUrl, linkText) {
+          gtag('event', 'external_link_click', {
+              'event_category': 'navigation',
+              'event_label': linkText,
+              'link_url': linkUrl
+          });
+          console.log('📊 GA4 Event: external_link_click -', linkUrl);
+      }
+      
+      function trackLinkedInClick() {
+          gtag('event', 'linkedin_click', {
+              'event_category': 'social',
+              'event_label': 'profile_visit',
+              'link_url': 'https://www.linkedin.com/in/mathias-schulz-191890ab/'
+          });
+          console.log('📊 GA4 Event: linkedin_click');
+      }
+      
+      function trackImpressumView() {
+          gtag('event', 'impressum_view', {
+              'event_category': 'navigation',
+              'event_label': 'footer_impressum_click'
+          });
+          console.log('📊 GA4 Event: impressum_view');
+      }
+      
+      function trackHeroStatsView() {
+          gtag('event', 'hero_stats_view', {
+              'event_category': 'engagement',
+              'event_label': 'stats_section_viewed'
+          });
+          console.log('📊 GA4 Event: hero_stats_view');
+      }
+      
+      let scrollDepthTracked = { '25': false, '50': false, '75': false, '100': false };
+      
+      function trackScrollDepth() {
+          const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+          
+          if (scrollPercent >= 25 && !scrollDepthTracked['25']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '25_percent',
+                  'scroll_percent': 25
+              });
+              scrollDepthTracked['25'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 25%');
+          }
+          
+          if (scrollPercent >= 50 && !scrollDepthTracked['50']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '50_percent',
+                  'scroll_percent': 50
+              });
+              scrollDepthTracked['50'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 50%');
+          }
+          
+          if (scrollPercent >= 75 && !scrollDepthTracked['75']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '75_percent',
+                  'scroll_percent': 75
+              });
+              scrollDepthTracked['75'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 75%');
+          }
+          
+          if (scrollPercent >= 100 && !scrollDepthTracked['100']) {
+              gtag('event', 'scroll_depth', {
+                  'event_category': 'engagement',
+                  'event_label': '100_percent',
+                  'scroll_percent': 100
+              });
+              scrollDepthTracked['100'] = true;
+              console.log('📊 GA4 Event: scroll_depth - 100%');
+          }
+      }
+      
+      if (typeof window !== 'undefined') {
+          window.addEventListener('scroll', trackScrollDepth);
+      }
+    </script>
+    <!-- End Google Analytics -->
+    
+    <!-- Schema.org Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "KI-ProjexX",
+      "image": "https://ki-projexx.de/logo.png",
+      "description": "KI-Beratung für Marketing, Werbung und Kommunikation in Hamburg, Buchholz, Nordheide und Lüneburger Heide. Spezialisiert auf AI-Transformation, Workshops und EU AI Act Compliance.",
+      "url": "https://ki-projexx.de",
+      "telephone": "+49-XXX-XXXXXXX",
+      "email": "mail@ki-projexx.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Haidbarg 30B",
+        "addressLocality": "Buchholz in der Nordheide",
+        "postalCode": "21244",
+        "addressRegion": "Niedersachsen",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "53.3264",
+        "longitude": "9.8692"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Hamburg"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Nordheide"
+        },
+        {
+          "@type": "City",
+          "name": "Buchholz in der Nordheide"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Lüneburger Heide"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Norddeutschland"
+        }
+      ],
+      "priceRange": "€€-€€€",
+      "founder": {
+        "@type": "Person",
+        "name": "Mathias Schulz",
+        "jobTitle": "KI-Berater & AI Consultant",
+        "sameAs": "https://www.linkedin.com/in/mathias-schulz-191890ab/"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/mathias-schulz-191890ab/",
+        "https://checkcar.app",
+        "https://fragally.de",
+        "https://grundrissratgeber.de"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "KI-Beratung Services",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "KI in Kommunikation",
+              "description": "KI-gestützte Optimierung der internen und externen Kommunikation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "KI im Marketing & Vertrieb",
+              "description": "KI-Beratung für Marketing-/Sales-Effizienz, Content-Generierung und personalisierte Kampagnen"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "KI Readiness Assessment",
+              "description": "Ermittlung des KI-Reifegrads und Entwicklung einer KI-Roadmap"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Workshops & Speaker",
+              "description": "KI-Keynotes und Workshops für Teams"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Prozessoptimierung",
+              "description": "Identifikation und Automatisierung von Prozessen durch KI"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "KI Workshops – EU AI Act",
+              "description": "Compliance-Workshops und Risikobewertung für EU AI Act"
+            }
+          }
+        ]
+      }
+    }
+    </script>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Colors */
             --background: 10 10 15;
             --foreground: 250 250 252;
             --accent: 180 100% 50%;
             --muted: 180 5% 60%;
             --border: 180 10% 25%;
             --glass: rgba(20, 25, 35, 0.7);
-            
-            /* Shadows */
             --shadow-accent: 0 0 20px hsla(180, 100%, 50%, 0.3);
             --shadow-strong: 0 0 40px hsla(180, 100%, 50%, 0.5);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', -apple-system, sans-serif;
@@ -76,7 +304,6 @@
             position: relative;
         }
 
-        /* Background grid pattern */
         body::before {
             content: '';
             position: fixed;
@@ -92,7 +319,6 @@
             z-index: 0;
         }
 
-        /* Background gradient orbs */
         body::after {
             content: '';
             position: fixed;
@@ -112,7 +338,6 @@
             66% { transform: translate(50px, -50px) scale(0.9); }
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -121,12 +346,8 @@
             z-index: 1;
         }
 
-        /* Monospace text */
-        .mono {
-            font-family: 'JetBrains Mono', monospace;
-        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Glass card effect */
         .glass-card {
             background: var(--glass);
             backdrop-filter: blur(10px);
@@ -141,7 +362,6 @@
             transform: translateY(-4px);
         }
 
-        /* Gradient text */
         .gradient-text {
             background: linear-gradient(135deg, hsl(var(--accent)), hsl(200, 100%, 70%));
             -webkit-background-clip: text;
@@ -149,7 +369,6 @@
             background-clip: text;
         }
 
-        /* Status dot */
         .status-dot {
             width: 8px;
             height: 8px;
@@ -164,16 +383,22 @@
             50% { opacity: 0.5; }
         }
 
-        /* Header */
         header {
             padding: 2rem 1rem;
             animation: fadeInDown 0.6s ease;
         }
 
+        .header-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
         .logo {
             display: flex;
             align-items: center;
-            justify-content: center;
             gap: 0.75rem;
             text-decoration: none;
         }
@@ -218,7 +443,34 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Hero Section */
+        .linkedin-link {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 119, 181, 0.1);
+            border: 1px solid rgba(0, 119, 181, 0.3);
+            border-radius: 9999px;
+            color: rgb(var(--foreground));
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .linkedin-link:hover {
+            background: rgba(0, 119, 181, 0.2);
+            border-color: #0077B5;
+            box-shadow: 0 0 20px rgba(0, 119, 181, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .linkedin-icon {
+            width: 20px;
+            height: 20px;
+            fill: #0077B5;
+        }
+
         .hero {
             padding: 4rem 1rem;
             text-align: center;
@@ -285,7 +537,6 @@
             margin-top: 0.25rem;
         }
 
-        /* Section Header */
         .section-header {
             display: flex;
             align-items: center;
@@ -307,7 +558,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        /* Section Title */
         .section-title {
             font-size: clamp(1.75rem, 4vw, 2.5rem);
             font-weight: 700;
@@ -326,10 +576,7 @@
             margin-right: auto;
         }
 
-        /* Services Grid */
-        .services-section {
-            padding: 4rem 1rem;
-        }
+        .services-section { padding: 4rem 1rem; }
 
         .services-grid {
             display: grid;
@@ -341,6 +588,7 @@
 
         .service-card {
             padding: 1.5rem;
+            cursor: pointer;
         }
 
         .service-icon {
@@ -385,10 +633,7 @@
             line-height: 1.6;
         }
 
-        /* Projects Section */
-        .projects-section {
-            padding: 4rem 1rem;
-        }
+        .projects-section { padding: 4rem 1rem; }
 
         .projects-grid {
             display: grid;
@@ -461,7 +706,6 @@
         }
 
         .project-card:hover .project-title {
-            color: hsl(var(--accent));
             filter: brightness(1.2);
         }
 
@@ -510,18 +754,13 @@
             flex-shrink: 0;
         }
 
-        /* Scan line effect */
         .scan-line {
             position: absolute;
             top: -100%;
             left: 0;
             width: 100%;
             height: 2px;
-            background: linear-gradient(90deg, 
-                transparent, 
-                hsl(var(--accent)), 
-                transparent
-            );
+            background: linear-gradient(90deg, transparent, hsl(var(--accent)), transparent);
             animation: scan 3s ease-in-out infinite;
             pointer-events: none;
         }
@@ -531,23 +770,12 @@
         }
 
         @keyframes scan {
-            0% {
-                top: -100%;
-                opacity: 0;
-            }
-            50% {
-                opacity: 1;
-            }
-            100% {
-                top: 100%;
-                opacity: 0;
-            }
+            0% { top: -100%; opacity: 0; }
+            50% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 4rem 1rem;
-        }
+        .cta-section { padding: 4rem 1rem; }
 
         .cta-box {
             max-width: 800px;
@@ -592,7 +820,6 @@
             box-shadow: 0 8px 30px hsla(180, 100%, 50%, 0.5);
         }
 
-        /* Footer */
         footer {
             padding: 2.5rem 1rem;
             border-top: 1px solid rgba(0, 255, 255, 0.1);
@@ -647,7 +874,6 @@
             color: hsl(var(--accent));
         }
 
-        /* Impressum Section */
         .impressum-section {
             max-width: 600px;
             margin: 3rem auto 0;
@@ -689,11 +915,6 @@
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .spam-protect {
-            /* HTML entities für Spam-Schutz */
-        }
-
-        /* Animations */
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
@@ -721,7 +942,6 @@
             }
         }
 
-        /* Scroll reveal */
         .reveal {
             opacity: 0;
             transform: translateY(30px);
@@ -733,8 +953,12 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
+            .header-wrapper {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
             .hero {
                 padding: 2rem 1rem;
             }
@@ -755,6 +979,11 @@
             .footer-content {
                 flex-direction: column;
             }
+
+            .linkedin-link {
+                font-size: 0.75rem;
+                padding: 0.5rem 1rem;
+            }
         }
 
         @media (min-width: 769px) {
@@ -764,131 +993,28 @@
             }
         }
     </style>
-    
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "KI-ProjexX",
-      "image": "https://ki-projexx.de/logo.png",
-      "description": "KI-Beratung für Marketing, Werbung & Kommunikation in Hamburg, Buchholz, Nordheide und Lüneburger Heide. Spezialisiert auf AI-Transformation, Workshops und EU AI Act Compliance.",
-      "url": "https://ki-projexx.de",
-      "telephone": "+49-XXX-XXXXXXX",
-      "email": "mail@ki-projexx.de",
-      "priceRange": "€€-€€€",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Haidbarg 30B",
-        "addressLocality": "Buchholz in der Nordheide",
-        "postalCode": "21244",
-        "addressRegion": "Niedersachsen",
-        "addressCountry": "DE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": "53.3264",
-        "longitude": "9.8692"
-      },
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Hamburg"
-        },
-        {
-          "@type": "City",
-          "name": "Buchholz"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Nordheide"
-        },
-        {
-          "@type": "AdministrativeArea",
-          "name": "Lüneburger Heide"
-        }
-      ],
-      "sameAs": [
-        "https://checkcar.app",
-        "https://fragally.de",
-        "https://grundrissratgeber.de"
-      ],
-      "founder": {
-        "@type": "Person",
-        "name": "Mathias Schulz"
-      },
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "KI-Beratung Services",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "KI in Kommunikation",
-              "description": "Optimierung von interner und externer Kommunikation mit KI-Lösungen"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "KI im Marketing",
-              "description": "Marketing-Effizienz steigern mit KI-gestützten Tools und Content-Generierung"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "KI Readiness Assessment",
-              "description": "Ermittlung des KI-Reifegrads und Entwicklung einer maßgeschneiderten Roadmap"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Events & Speaker",
-              "description": "Keynotes, Workshops und inspirierende Bühnenauftritte für KI-Transformation"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Prozessoptimierung",
-              "description": "Identifikation und Automatisierung von Prozessen durch KI"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "KI Workshops – EU AI Act",
-              "description": "Compliance-Workshops und Umsetzungsstrategien für den EU AI Act"
-            }
-          }
-        ]
-      }
-    }
-    </script>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-icon"></div>
-                <div class="logo-text">
-                    <div class="logo-title">KI-<span class="gradient-text">ProjexX</span></div>
-                    <div class="logo-subtitle">AI SOLUTIONS</div>
-                </div>
-            </a>
+            <div class="header-wrapper">
+                <a href="#" class="logo">
+                    <div class="logo-icon"></div>
+                    <div class="logo-text">
+                        <div class="logo-title">KI-<span class="gradient-text">ProjexX</span></div>
+                        <div class="logo-subtitle">AI SOLUTIONS</div>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/in/mathias-schulz-191890ab/" target="_blank" rel="noopener noreferrer" class="linkedin-link" onclick="if (typeof trackLinkedInClick !== 'undefined') trackLinkedInClick();">
+                    <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                    <span>Mathias Schulz</span>
+                </a>
+            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-status">
             <div class="status-dot"></div>
@@ -901,7 +1027,7 @@
         </h1>
 
         <p class="hero-subtitle">
-            Andere reden über KI. Wir machen sie zum Wachstumsmotor Ihres Unternehmens.
+            Ihr KI-Berater für Marketing, Werbung & Kommunikation, based in Buchholz/Nordheide/Hamburg.
         </p>
 
         <div class="hero-stats">
@@ -920,7 +1046,6 @@
         </div>
     </section>
 
-    <!-- CTA Section - MOVED UP -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-box reveal">
@@ -928,14 +1053,13 @@
                 <p class="cta-description">
                     Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, wie KI Ihr Business auf das nächste Level bringen kann
                 </p>
-                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">
+                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();">
                     Termin vereinbaren
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
     <section class="services-section">
         <div class="container">
             <div class="section-header reveal">
@@ -944,25 +1068,25 @@
                 <div class="section-header-line"></div>
             </div>
 
-            <h2 class="section-title reveal">Beratung & Workshops</h2>
-            <p class="section-subtitle reveal mono">// Maßgeschneiderte KI-Beratung für Ihren Erfolg</p>
+            <h2 class="section-title reveal">KI-Beratung & Workshops</h2>
+            <p class="section-subtitle reveal mono">// Spezialisiert auf Marketing, Werbung & Kommunikation</p>
 
             <div class="services-grid">
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in Kommunikation');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                                 <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
                             </svg>
                         </div>
-                        <h3 class="service-title">KI in Kommunikation</h3>
+                        <h3 class="service-title">KI in der Kommunikation</h3>
                     </div>
                     <p class="service-description">
-                        Optimieren Sie Ihre interne und externe Kommunikation mit maßgeschneiderten KI-Lösungen. Von automatisierten Antworten bis zu intelligenten Chatbots.
+                        Optimieren Sie Ihre interne und externe Kommunikation mit maßgeschneiderten KI-Lösungen. Von automatisierten Newslettern bis zu intelligenten Chatbots für effiziente Kundenkommunikation.
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI im Marketing');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -970,14 +1094,29 @@
                                 <path d="M17 6h6v6"></path>
                             </svg>
                         </div>
-                        <h3 class="service-title">KI im Marketing</h3>
+                        <h3 class="service-title">KI im Sales & Marketing</h3>
                     </div>
                     <p class="service-description">
-                        Steigern Sie Ihre Marketing-Effizienz mit KI-gestützten Tools. Content-Generierung, Zielgruppen-Analyse und personalisierte Kampagnen.
+                        Steigern Sie Ihre Umsätze mit KI-gestützten Tools. Content-Generierung, Zielkunden-Analyse, personalisierte Kampagnen und automatisierte Marketing-Workflows.
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in der Werbung');">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                <path d="M16 3l-4 4-4-4"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">KI in der Werbung</h3>
+                    </div>
+                    <p class="service-description">
+                        Revolutionieren Sie Ihre Werbestrategie mit KI. Automatisierte Creatives, predictive Targeting, Performance-Optimierung und datengetriebene Werbemaßnahmen.
+                    </p>
+                </div>
+
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Readiness Assessment');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -988,11 +1127,11 @@
                         <h3 class="service-title">KI Readiness Assessment</h3>
                     </div>
                     <p class="service-description">
-                        Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation.
+                        Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation. Strukturierte Analyse und konkrete Handlungsempfehlungen für Prozessoptimierungen.
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('Events & Speaker');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1003,26 +1142,11 @@
                         <h3 class="service-title">Events & Speaker</h3>
                     </div>
                     <p class="service-description">
-                        Keynotes, die hängen bleiben. Workshops, die wirken. Inspirierende Bühnenauftritte, die Teams motivieren und neue Perspektiven eröffnen.
+                        Workshops, die wirken. Inspirierende Events, die Teams motivieren und neue Perspektiven zum Thema KI aufzeigen.
                     </p>
                 </div>
 
-                <div class="glass-card service-card reveal">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="3"></circle>
-                                <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6m-13.36.36l4.24-4.24m4.24-4.24l4.24-4.24"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">Prozessoptimierung</h3>
-                    </div>
-                    <p class="service-description">
-                        Identifizieren und automatisieren Sie zeitintensive Prozesse. Steigern Sie Effizienz und reduzieren Sie Kosten durch intelligente Automation.
-                    </p>
-                </div>
-
-                <div class="glass-card service-card reveal">
+                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Workshops EU AI Act');">
                     <div class="service-header">
                         <div class="service-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1033,14 +1157,13 @@
                         <h3 class="service-title">KI Workshops – EU AI Act</h3>
                     </div>
                     <p class="service-description">
-                        Bereiten Sie Ihr Unternehmen auf den EU AI Act vor. Compliance-Workshops, Risikobewertung und praktische Umsetzungsstrategien für die neue KI-Verordnung.
+                        Bereiten Sie Ihre Mitarbeitenden auf den EU AI Act vor. Compliance-Workshops (inkl. Zertifikat), Risikobewertung und praktische Umsetzungsstrategien für die neue KI-Verordnung.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects Section -->
     <section class="projects-section">
         <div class="container">
             <div class="section-header reveal">
@@ -1049,10 +1172,10 @@
                 <div class="section-header-line"></div>
             </div>
 
-            <h2 class="section-title reveal">Unsere Projekte</h2>
+            <h2 class="section-title reveal">Unsere KI-Projekte</h2>
 
             <div class="projects-grid">
-                <div class="glass-card project-card reveal" onclick="window.open('https://checkcar.app', '_blank')">
+                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('CheckCar', 'https://checkcar.app'); window.open('https://checkcar.app', '_blank');">
                     <div class="project-icon-box">
                         <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
@@ -1101,7 +1224,7 @@
                     <div class="scan-line"></div>
                 </div>
 
-                <div class="glass-card project-card reveal" onclick="window.open('https://fragally.de', '_blank')">
+                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('FragAlly', 'https://fragally.de'); window.open('https://fragally.de', '_blank');">
                     <div class="project-icon-box">
                         <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
@@ -1124,7 +1247,7 @@
                             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
-                            Informationen zu 46 Krankheiten
+                            Die häufigsten Hunde-Krankheiten
                         </li>
                         <li>
                             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1148,7 +1271,7 @@
                     <div class="scan-line"></div>
                 </div>
 
-                <div class="glass-card project-card reveal" onclick="window.open('https://grundrissratgeber.de', '_blank')">
+                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('Grundrissratgeber', 'https://grundrissratgeber.de'); window.open('https://grundrissratgeber.de', '_blank');">
                     <div class="project-icon-box">
                         <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                             <rect x="3" y="3" width="7" height="7"></rect>
@@ -1180,19 +1303,19 @@
                             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
-                            Optimierungsvorschläge
+                            3D Visualierung 
                         </li>
                         <li>
                             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
-                            Raumplanung
+                            Raumplanung & Interior-Design
                         </li>
                         <li>
                             <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
-                            Expertentipps
+                            3D Küchenplanung 
                         </li>
                     </ul>
                     <div class="scan-line"></div>
@@ -1201,42 +1324,40 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
                 <div class="footer-links">
-                    <a href="https://checkcar.app" target="_blank" rel="noopener noreferrer">CheckCar</a>
-                    <a href="https://fragally.de" target="_blank" rel="noopener noreferrer">FragAlly</a>
-                    <a href="https://grundrissratgeber.de" target="_blank" rel="noopener noreferrer">Grundrissratgeber</a>
+                    <a href="https://checkcar.app" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://checkcar.app', 'CheckCar Footer');">CheckCar</a>
+                    <a href="https://fragally.de" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://fragally.de', 'FragAlly Footer');">FragAlly</a>
+                    <a href="https://grundrissratgeber.de" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://grundrissratgeber.de', 'Grundrissratgeber Footer');">Grundrissratgeber</a>
                     <span class="footer-divider">|</span>
-                    <a href="#impressum" class="impressum-link">Impressum</a>
+                    <a href="https://www.linkedin.com/in/mathias-schulz-191890ab/" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackLinkedInClick !== 'undefined') trackLinkedInClick();">LinkedIn</a>
+                    <span class="footer-divider">|</span>
+                    <a href="#impressum" class="impressum-link" onclick="if (typeof trackImpressumView !== 'undefined') trackImpressumView();">Impressum</a>
                 </div>
                 <p class="footer-copyright">
                     © 2026 KI-ProjexX.de - Alle Rechte vorbehalten
                 </p>
             </div>
             
-            <!-- Impressum Section -->
             <div id="impressum" class="impressum-section">
                 <h3 class="impressum-title">Impressum</h3>
                 <div class="impressum-content">
                     <p><strong>KI-ProjexX</strong></p>
                     <p>Mathias Schulz</p>
                     <p>Haidbarg 30B</p>
-                    <p>21244 Buchholz</p>
+                    <p>21244 Buchholz in der Nordheide</p>
                     <p>Deutschland</p>
                     <p class="impressum-email">
-                        E-Mail: <span class="email-protected">mail<span class="spam-protect">&#64;</span>ki-projexx<span class="spam-protect">&#46;</span>de</span>
+                        E-Mail: <span class="email-protected">mathias<span class="spam-protect">&#64;</span>ki-projexx<span class="spam-protect">&#46;</span>de</span>
                     </p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- Scroll Reveal Script -->
     <script>
-        // Intersection Observer for scroll animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1246,16 +1367,23 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
+                    
+                    if (entry.target.classList.contains('hero-stats') && typeof trackHeroStatsView !== 'undefined') {
+                        trackHeroStatsView();
+                    }
                 }
             });
         }, observerOptions);
 
-        // Observe all elements with reveal class
         document.querySelectorAll('.reveal').forEach((el) => {
             observer.observe(el);
         });
+        
+        const heroStats = document.querySelector('.hero-stats');
+        if (heroStats) {
+            observer.observe(heroStats);
+        }
 
-        // Add cursor pointer to project cards
         document.querySelectorAll('.project-card').forEach(card => {
             card.style.cursor = 'pointer';
         });
