@@ -41,16 +41,33 @@
     <link rel="dns-prefetch" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-3CBJQ2Y0CS"></script>
+    <!-- Google Analytics mit Consent Management -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-3CBJQ2Y0CS');
+      
+      // Cookie Consent Check
+      function hasAnalyticsConsent() {
+          return localStorage.getItem('analytics_consent') === 'true';
+      }
+      
+      // Initialize GA only with consent
+      if (hasAnalyticsConsent()) {
+          var gaScript = document.createElement('script');
+          gaScript.async = true;
+          gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3CBJQ2Y0CS';
+          document.head.appendChild(gaScript);
+          
+          gtag('js', new Date());
+          gtag('config', 'G-3CBJQ2Y0CS', {
+              'anonymize_ip': true,
+              'cookie_flags': 'SameSite=None;Secure'
+          });
+      }
       
       // Custom Event Tracking Functions
       function trackCalendlyClick() {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'calendly_click', {
               'event_category': 'conversion',
               'event_label': 'cta_button_click',
@@ -60,6 +77,7 @@
       }
       
       function trackServiceClick(serviceName) {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'service_click', {
               'event_category': 'engagement',
               'event_label': serviceName,
@@ -69,6 +87,7 @@
       }
       
       function trackProjectClick(projectName, projectUrl) {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'project_click', {
               'event_category': 'engagement',
               'event_label': projectName,
@@ -79,6 +98,7 @@
       }
       
       function trackExternalLink(linkUrl, linkText) {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'external_link_click', {
               'event_category': 'navigation',
               'event_label': linkText,
@@ -88,6 +108,7 @@
       }
       
       function trackLinkedInClick() {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'linkedin_click', {
               'event_category': 'social',
               'event_label': 'profile_visit',
@@ -97,6 +118,7 @@
       }
       
       function trackImpressumView() {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'impressum_view', {
               'event_category': 'navigation',
               'event_label': 'footer_impressum_click'
@@ -105,6 +127,7 @@
       }
       
       function trackHeroStatsView() {
+          if (!hasAnalyticsConsent()) return;
           gtag('event', 'hero_stats_view', {
               'event_category': 'engagement',
               'event_label': 'stats_section_viewed'
@@ -115,6 +138,7 @@
       let scrollDepthTracked = { '25': false, '50': false, '75': false, '100': false };
       
       function trackScrollDepth() {
+          if (!hasAnalyticsConsent()) return;
           const scrollPercent = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
           
           if (scrollPercent >= 25 && !scrollDepthTracked['25']) {
@@ -174,7 +198,7 @@
       "description": "KI-Beratung für Marketing, Werbung und Kommunikation in Hamburg, Buchholz, Nordheide und Lüneburger Heide. Spezialisiert auf AI-Transformation, Workshops und EU AI Act Compliance.",
       "url": "https://ki-projexx.de",
       "telephone": "+49-XXX-XXXXXXX",
-      "email": "mail@ki-projexx.de",
+      "email": "mathias@ki-projexx.de",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Haidbarg 30B",
@@ -280,6 +304,76 @@
     }
     </script>
     
+    <!-- FAQ Schema für Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Was kostet eine KI-Beratung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Kosten für KI-Beratung variieren je nach Projektumfang. Ein kostenloses Erstgespräch hilft, Ihre individuellen Anforderungen zu ermitteln und ein passendes Angebot zu erstellen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche Branchen profitieren von KI-Beratung?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Besonders profitieren Marketing, Werbung, Kommunikation, E-Commerce und der Mittelstand. KI optimiert Prozesse, steigert Effizienz und ermöglicht personalisierte Kundenkommunikation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Wie lange dauert eine KI-Transformation?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Dauer hängt vom Projekt ab. Kleine Optimierungen sind in wenigen Wochen umsetzbar, umfassende Transformationen benötigen 3-12 Monate. Alles beginnt mit einem KI Readiness Assessment."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist der EU AI Act?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Der EU AI Act ist die KI-Verordnung der EU, die ab 2025 schrittweise in Kraft tritt. Sie regelt den Einsatz von KI-Systemen und fordert Risikobewertungen. Unsere Workshops bereiten Sie darauf vor."
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- Breadcrumb Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://ki-projexx.de"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "KI-Beratung Services",
+          "item": "https://ki-projexx.de#services"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Projekte",
+          "item": "https://ki-projexx.de#projects"
+        }
+      ]
+    }
+    </script>
+    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -338,6 +432,24 @@
             66% { transform: translate(50px, -50px) scale(0.9); }
         }
 
+        /* Skip to content for accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background: hsl(var(--accent));
+            color: rgb(var(--background));
+            padding: 8px 16px;
+            text-decoration: none;
+            font-weight: 600;
+            z-index: 100;
+            border-radius: 0 0 8px 0;
+        }
+
+        .skip-link:focus {
+            top: 0;
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -360,6 +472,12 @@
             border-color: hsl(var(--accent));
             box-shadow: var(--shadow-accent);
             transform: translateY(-4px);
+        }
+
+        /* Improved focus indicators */
+        a:focus, button:focus {
+            outline: 2px solid hsl(var(--accent));
+            outline-offset: 2px;
         }
 
         .gradient-text {
@@ -535,6 +653,30 @@
             letter-spacing: 0.1em;
             color: hsl(var(--muted));
             margin-top: 0.25rem;
+        }
+
+        /* Trust badges section */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .trust-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            color: hsl(var(--muted));
+        }
+
+        .trust-badge-icon {
+            width: 20px;
+            height: 20px;
+            stroke: hsl(var(--accent));
         }
 
         .section-header {
@@ -820,6 +962,84 @@
             box-shadow: 0 8px 30px hsla(180, 100%, 50%, 0.5);
         }
 
+        /* Cookie Banner Styles */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(0, 255, 255, 0.2);
+            padding: 1.5rem;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .cookie-banner.show {
+            transform: translateY(0);
+        }
+
+        .cookie-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .cookie-text {
+            flex: 1;
+            min-width: 250px;
+            font-size: 0.875rem;
+            color: hsl(var(--muted));
+        }
+
+        .cookie-text a {
+            color: hsl(var(--accent));
+            text-decoration: underline;
+        }
+
+        .cookie-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .cookie-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .cookie-btn-accept {
+            background: linear-gradient(135deg, hsl(var(--accent)), hsl(200, 100%, 60%));
+            color: rgb(10, 10, 15);
+        }
+
+        .cookie-btn-accept:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px hsla(180, 100%, 50%, 0.5);
+        }
+
+        .cookie-btn-decline {
+            background: transparent;
+            color: hsl(var(--muted));
+            border: 1px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .cookie-btn-decline:hover {
+            border-color: hsl(var(--accent));
+            color: rgb(var(--foreground));
+        }
+
         footer {
             padding: 2.5rem 1rem;
             border-top: 1px solid rgba(0, 255, 255, 0.1);
@@ -984,6 +1204,19 @@
                 font-size: 0.75rem;
                 padding: 0.5rem 1rem;
             }
+
+            .cookie-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cookie-buttons {
+                justify-content: center;
+            }
+
+            .trust-badges {
+                gap: 1rem;
+            }
         }
 
         @media (min-width: 769px) {
@@ -992,21 +1225,33 @@
                 justify-content: space-between;
             }
         }
+
+        /* Reduced motion for accessibility */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 <body>
-    <header>
+    <!-- Skip to content link for screen readers -->
+    <a href="#main-content" class="skip-link">Zum Hauptinhalt springen</a>
+
+    <header role="banner">
         <div class="container">
             <div class="header-wrapper">
-                <a href="#" class="logo">
-                    <div class="logo-icon"></div>
+                <a href="#" class="logo" aria-label="KI-ProjexX Homepage">
+                    <div class="logo-icon" aria-hidden="true"></div>
                     <div class="logo-text">
                         <div class="logo-title">KI-<span class="gradient-text">ProjexX</span></div>
                         <div class="logo-subtitle">AI SOLUTIONS</div>
                     </div>
                 </a>
-                <a href="https://www.linkedin.com/in/mathias-schulz-191890ab/" target="_blank" rel="noopener noreferrer" class="linkedin-link" onclick="if (typeof trackLinkedInClick !== 'undefined') trackLinkedInClick();">
-                    <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <a href="https://www.linkedin.com/in/mathias-schulz-191890ab/" target="_blank" rel="noopener noreferrer" class="linkedin-link" onclick="if (typeof trackLinkedInClick !== 'undefined') trackLinkedInClick();" aria-label="Mathias Schulz auf LinkedIn">
+                    <svg class="linkedin-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
                     </svg>
                     <span>Mathias Schulz</span>
@@ -1015,335 +1260,379 @@
         </div>
     </header>
 
-    <section class="hero">
-        <div class="hero-status">
-            <div class="status-dot"></div>
-            <span class="hero-status-text mono">System Online • Neural Networks Active</span>
+    <main id="main-content" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero-status" role="status" aria-live="polite">
+                <div class="status-dot" aria-hidden="true"></div>
+                <span class="hero-status-text mono">System Online • Neural Networks Active</span>
+            </div>
+
+            <h1 id="hero-title">
+                Innovative <span class="gradient-text">KI-Lösungen</span><br>
+                für die digitale Zukunft
+            </h1>
+
+            <p class="hero-subtitle">
+                Ihr KI-Berater für Marketing, Werbung & Kommunikation, based in Buchholz/Nordheide/Hamburg.
+            </p>
+
+            <div class="hero-stats" role="list" aria-label="Unternehmenskennzahlen">
+                <div class="stat" role="listitem">
+                    <div class="stat-value" aria-label="20 Plus Jahre Erfahrung">20+</div>
+                    <div class="stat-label">Jahre Erfahrung</div>
+                </div>
+                <div class="stat" role="listitem">
+                    <div class="stat-value" aria-label="Unendliche Möglichkeiten">∞</div>
+                    <div class="stat-label">Möglichkeiten</div>
+                </div>
+                <div class="stat" role="listitem">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">AI Support</div>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="trust-badges" role="list" aria-label="Vertrauensmerkmale">
+                <div class="trust-badge" role="listitem">
+                    <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                    </svg>
+                    <span>EU AI Act Compliant</span>
+                </div>
+                <div class="trust-badge" role="listitem">
+                    <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                    <span>DSGVO-konform</span>
+                </div>
+                <div class="trust-badge" role="listitem">
+                    <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                    </svg>
+                    <span>20+ Jahre Expertise</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-box reveal">
+                    <h2 id="cta-title" class="cta-title">Bereit für Ihre KI-Transformation?</h2>
+                    <p class="cta-description">
+                        Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, wie KI Ihr Business auf das nächste Level bringen kann
+                    </p>
+                    <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();" aria-label="Termin für kostenloses Erstgespräch vereinbaren">
+                        Termin vereinbaren
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="services-section" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-header-line" aria-hidden="true"></div>
+                    <span class="section-header-text mono">&lt; Services /&gt;</span>
+                    <div class="section-header-line" aria-hidden="true"></div>
+                </div>
+
+                <h2 id="services-title" class="section-title reveal">KI-Beratung & Workshops</h2>
+                <p class="section-subtitle reveal mono">// Spezialisiert auf Marketing, Werbung & Kommunikation</p>
+
+                <div class="services-grid" role="list">
+                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in Kommunikation');" tabindex="0">
+                        <div class="service-header">
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">KI in der Kommunikation</h3>
+                        </div>
+                        <p class="service-description">
+                            Optimieren Sie Ihre interne und externe Kommunikation mit maßgeschneiderten KI-Lösungen. Von automatisierten Newslettern bis zu intelligenten Chatbots für effiziente Kundenkommunikation.
+                        </p>
+                    </article>
+
+                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI im Marketing');" tabindex="0">
+                        <div class="service-header">
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
+                                    <path d="M17 6h6v6"></path>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">KI im Sales & Marketing</h3>
+                        </div>
+                        <p class="service-description">
+                            Steigern Sie Ihre Umsätze mit KI-gestützten Tools. Content-Generierung, Zielkunden-Analyse, personalisierte Kampagnen und automatisierte Marketing-Workflows.
+                        </p>
+                    </article>
+
+                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in der Werbung');" tabindex="0">
+                        <div class="service-header">
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                                    <path d="M16 3l-4 4-4-4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">KI in der Werbung</h3>
+                        </div>
+                        <p class="service-description">
+                            Revolutionieren Sie Ihre Werbestrategie mit KI. Automatisierte Creatives, predictive Targeting, Performance-Optimierung und datengetriebene Werbemaßnahmen.
+                        </p>
+                    </article>
+
+                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Readiness Assessment');" tabindex="0">
+                        <div class="service-header">
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <circle cx="12" cy="12" r="10"></circle>
+                                    <path d="M12 16v-4M12 8h.01"></path>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">KI Readiness Assessment</h3>
+                        </div>
+                        <p class="service-description">
+                            Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation. Strukturierte Analyse und konkrete Handlungsempfehlungen für Prozessoptimierungen.
+                        </p>
+                    </article>
+
+                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('Events & Speaker');" tabindex="0">
+                        <div class="service-header">
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                                    <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"></path>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">Events & Speaker</h3>
+                        </div>
+                        <p class="service-description">
+                            Workshops, die wirken. Inspirierende Events, die Teams motivieren und neue Perspektiven zum Thema KI aufzeigen.
+                        </p>
+                    </article>
+
+                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Workshops EU AI Act');" tabindex="0">
+                        <div class="service-header">
+                            <div class="service-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                    <path d="M12 2a10 10 0 0 1 7.38 16.75l-8.63.13a.5.5 0 0 1-.37-.16L3 11.37a.5.5 0 0 1 .13-.74L12 2z"></path>
+                                    <path d="M9 21h6M12 17v4"></path>
+                                </svg>
+                            </div>
+                            <h3 class="service-title">KI Workshops – EU AI Act</h3>
+                        </div>
+                        <p class="service-description">
+                            Bereiten Sie Ihre Mitarbeitenden auf den EU AI Act vor. Compliance-Workshops (inkl. Zertifikat), Risikobewertung und praktische Umsetzungsstrategien für die neue KI-Verordnung.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects-section" aria-labelledby="projects-title">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="section-header-line" aria-hidden="true"></div>
+                    <span class="section-header-text mono">&lt; ProjexX /&gt;</span>
+                    <div class="section-header-line" aria-hidden="true"></div>
+                </div>
+
+                <h2 id="projects-title" class="section-title reveal">Unsere KI-Projekte</h2>
+
+                <div class="projects-grid" role="list">
+                    <article class="glass-card project-card reveal" role="listitem" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('CheckCar', 'https://checkcar.app'); window.open('https://checkcar.app', '_blank');" tabindex="0" aria-label="CheckCar Projekt - Öffnet in neuem Tab">
+                        <div class="project-icon-box" aria-hidden="true">
+                            <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
+                                <circle cx="6.5" cy="16.5" r="2.5"></circle>
+                                <circle cx="16.5" cy="16.5" r="2.5"></circle>
+                            </svg>
+                        </div>
+                        <div class="project-title-wrapper">
+                            <h3 class="project-title">CheckCar</h3>
+                            <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </div>
+                        <div class="project-domain">checkcar.app</div>
+                        <p class="project-description">
+                            KI-gestützte Gebrauchtwagen-Checkliste für sicheren Fahrzeugkauf
+                        </p>
+                        <ul class="project-features">
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Automatische Foto-Analyse
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                KFZ-Schein Auswertung
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Risikobewertung & Empfehlungen
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Professionelle Checklisten
+                            </li>
+                        </ul>
+                        <div class="scan-line" aria-hidden="true"></div>
+                    </article>
+
+                    <article class="glass-card project-card reveal" role="listitem" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('FragAlly', 'https://fragally.de'); window.open('https://fragally.de', '_blank');" tabindex="0" aria-label="FragAlly Projekt - Öffnet in neuem Tab">
+                        <div class="project-icon-box" aria-hidden="true">
+                            <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </div>
+                        <div class="project-title-wrapper">
+                            <h3 class="project-title">FragAlly</h3>
+                            <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </div>
+                        <div class="project-domain">fragally.de</div>
+                        <p class="project-description">
+                            Umfassendes Hundekrankheiten-Lexikon mit KI-Unterstützung
+                        </p>
+                        <ul class="project-features">
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Die häufigsten Hunde-Krankheiten
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Symptome & Behandlung
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                KI-gestützte Beratung
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Ersetzt nicht den Tierarzt
+                            </li>
+                        </ul>
+                        <div class="scan-line" aria-hidden="true"></div>
+                    </article>
+
+                    <article class="glass-card project-card reveal" role="listitem" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('Grundrissratgeber', 'https://grundrissratgeber.de'); window.open('https://grundrissratgeber.de', '_blank');" tabindex="0" aria-label="Grundrissratgeber Projekt - Öffnet in neuem Tab">
+                        <div class="project-icon-box" aria-hidden="true">
+                            <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                                <rect x="3" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="3" width="7" height="7"></rect>
+                                <rect x="14" y="14" width="7" height="7"></rect>
+                                <rect x="3" y="14" width="7" height="7"></rect>
+                            </svg>
+                        </div>
+                        <div class="project-title-wrapper">
+                            <h3 class="project-title">Grundrissratgeber</h3>
+                            <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                                <polyline points="15 3 21 3 21 9"></polyline>
+                                <line x1="10" y1="14" x2="21" y2="3"></line>
+                            </svg>
+                        </div>
+                        <div class="project-domain">grundrissratgeber.de</div>
+                        <p class="project-description">
+                            Intelligente Grundrissplanung und -optimierung
+                        </p>
+                        <ul class="project-features">
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                KI-basierte Analyse
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                3D Visualierung 
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                Raumplanung & Interior-Design
+                            </li>
+                            <li>
+                                <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <polyline points="9 18 15 12 9 6"></polyline>
+                                </svg>
+                                3D Küchenplanung 
+                            </li>
+                        </ul>
+                        <div class="scan-line" aria-hidden="true"></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Cookie Consent Banner -->
+    <aside id="cookie-banner" class="cookie-banner" role="complementary" aria-label="Cookie Einstellungen">
+        <div class="cookie-content">
+            <div class="cookie-text">
+                <p>Wir verwenden Cookies und Google Analytics, um Ihre Nutzererfahrung zu verbessern und unsere Website zu optimieren. Durch das Akzeptieren stimmen Sie der Verwendung zu. Weitere Informationen finden Sie in unserer <a href="#impressum">Datenschutzerklärung</a>.</p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-accept" onclick="acceptCookies()" aria-label="Alle Cookies akzeptieren">
+                    Alle akzeptieren
+                </button>
+                <button class="cookie-btn cookie-btn-decline" onclick="declineCookies()" aria-label="Nur notwendige Cookies">
+                    Nur notwendige
+                </button>
+            </div>
         </div>
+    </aside>
 
-        <h1>
-            Innovative <span class="gradient-text">KI-Lösungen</span><br>
-            für die digitale Zukunft
-        </h1>
-
-        <p class="hero-subtitle">
-            Ihr KI-Berater für Marketing, Werbung & Kommunikation, based in Buchholz/Nordheide/Hamburg.
-        </p>
-
-        <div class="hero-stats">
-            <div class="stat">
-                <div class="stat-value">20+</div>
-                <div class="stat-label">Jahre Erfahrung</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">∞</div>
-                <div class="stat-label">Möglichkeiten</div>
-            </div>
-            <div class="stat">
-                <div class="stat-value">24/7</div>
-                <div class="stat-label">AI Support</div>
-            </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <div class="cta-box reveal">
-                <h2 class="cta-title">Bereit für Ihre KI-Transformation?</h2>
-                <p class="cta-description">
-                    Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, wie KI Ihr Business auf das nächste Level bringen kann
-                </p>
-                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();">
-                    Termin vereinbaren
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="services-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-header-line"></div>
-                <span class="section-header-text mono">&lt; Services /&gt;</span>
-                <div class="section-header-line"></div>
-            </div>
-
-            <h2 class="section-title reveal">KI-Beratung & Workshops</h2>
-            <p class="section-subtitle reveal mono">// Spezialisiert auf Marketing, Werbung & Kommunikation</p>
-
-            <div class="services-grid">
-                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in Kommunikation');">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">KI in der Kommunikation</h3>
-                    </div>
-                    <p class="service-description">
-                        Optimieren Sie Ihre interne und externe Kommunikation mit maßgeschneiderten KI-Lösungen. Von automatisierten Newslettern bis zu intelligenten Chatbots für effiziente Kundenkommunikation.
-                    </p>
-                </div>
-
-                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI im Marketing');">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M23 6l-9.5 9.5-5-5L1 18"></path>
-                                <path d="M17 6h6v6"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">KI im Sales & Marketing</h3>
-                    </div>
-                    <p class="service-description">
-                        Steigern Sie Ihre Umsätze mit KI-gestützten Tools. Content-Generierung, Zielkunden-Analyse, personalisierte Kampagnen und automatisierte Marketing-Workflows.
-                    </p>
-                </div>
-
-                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI in der Werbung');">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
-                                <path d="M16 3l-4 4-4-4"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">KI in der Werbung</h3>
-                    </div>
-                    <p class="service-description">
-                        Revolutionieren Sie Ihre Werbestrategie mit KI. Automatisierte Creatives, predictive Targeting, Performance-Optimierung und datengetriebene Werbemaßnahmen.
-                    </p>
-                </div>
-
-                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Readiness Assessment');">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path d="M12 16v-4M12 8h.01"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">KI Readiness Assessment</h3>
-                    </div>
-                    <p class="service-description">
-                        Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation. Strukturierte Analyse und konkrete Handlungsempfehlungen für Prozessoptimierungen.
-                    </p>
-                </div>
-
-                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('Events & Speaker');">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2M12 19v4M8 23h8"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">Events & Speaker</h3>
-                    </div>
-                    <p class="service-description">
-                        Workshops, die wirken. Inspirierende Events, die Teams motivieren und neue Perspektiven zum Thema KI aufzeigen.
-                    </p>
-                </div>
-
-                <div class="glass-card service-card reveal" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Workshops EU AI Act');">
-                    <div class="service-header">
-                        <div class="service-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                                <path d="M12 2a10 10 0 0 1 7.38 16.75l-8.63.13a.5.5 0 0 1-.37-.16L3 11.37a.5.5 0 0 1 .13-.74L12 2z"></path>
-                                <path d="M9 21h6M12 17v4"></path>
-                            </svg>
-                        </div>
-                        <h3 class="service-title">KI Workshops – EU AI Act</h3>
-                    </div>
-                    <p class="service-description">
-                        Bereiten Sie Ihre Mitarbeitenden auf den EU AI Act vor. Compliance-Workshops (inkl. Zertifikat), Risikobewertung und praktische Umsetzungsstrategien für die neue KI-Verordnung.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="projects-section">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-header-line"></div>
-                <span class="section-header-text mono">&lt; ProjexX /&gt;</span>
-                <div class="section-header-line"></div>
-            </div>
-
-            <h2 class="section-title reveal">Unsere KI-Projekte</h2>
-
-            <div class="projects-grid">
-                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('CheckCar', 'https://checkcar.app'); window.open('https://checkcar.app', '_blank');">
-                    <div class="project-icon-box">
-                        <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path>
-                            <circle cx="6.5" cy="16.5" r="2.5"></circle>
-                            <circle cx="16.5" cy="16.5" r="2.5"></circle>
-                        </svg>
-                    </div>
-                    <div class="project-title-wrapper">
-                        <h3 class="project-title">CheckCar</h3>
-                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </div>
-                    <div class="project-domain">checkcar.app</div>
-                    <p class="project-description">
-                        KI-gestützte Gebrauchtwagen-Checkliste für sicheren Fahrzeugkauf
-                    </p>
-                    <ul class="project-features">
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Automatische Foto-Analyse
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            KFZ-Schein Auswertung
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Risikobewertung & Empfehlungen
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Professionelle Checklisten
-                        </li>
-                    </ul>
-                    <div class="scan-line"></div>
-                </div>
-
-                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('FragAlly', 'https://fragally.de'); window.open('https://fragally.de', '_blank');">
-                    <div class="project-icon-box">
-                        <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
-                        </svg>
-                    </div>
-                    <div class="project-title-wrapper">
-                        <h3 class="project-title">FragAlly</h3>
-                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </div>
-                    <div class="project-domain">fragally.de</div>
-                    <p class="project-description">
-                        Umfassendes Hundekrankheiten-Lexikon mit KI-Unterstützung
-                    </p>
-                    <ul class="project-features">
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Die häufigsten Hunde-Krankheiten
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Symptome & Behandlung
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            KI-gestützte Beratung
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Ersetzt nicht den Tierarzt
-                        </li>
-                    </ul>
-                    <div class="scan-line"></div>
-                </div>
-
-                <div class="glass-card project-card reveal" onclick="if (typeof trackProjectClick !== 'undefined') trackProjectClick('Grundrissratgeber', 'https://grundrissratgeber.de'); window.open('https://grundrissratgeber.de', '_blank');">
-                    <div class="project-icon-box">
-                        <svg class="project-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <rect x="3" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="3" width="7" height="7"></rect>
-                            <rect x="14" y="14" width="7" height="7"></rect>
-                            <rect x="3" y="14" width="7" height="7"></rect>
-                        </svg>
-                    </div>
-                    <div class="project-title-wrapper">
-                        <h3 class="project-title">Grundrissratgeber</h3>
-                        <svg class="external-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                            <polyline points="15 3 21 3 21 9"></polyline>
-                            <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                    </div>
-                    <div class="project-domain">grundrissratgeber.de</div>
-                    <p class="project-description">
-                        Intelligente Grundrissplanung und -optimierung
-                    </p>
-                    <ul class="project-features">
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            KI-basierte Analyse
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            3D Visualierung 
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            Raumplanung & Interior-Design
-                        </li>
-                        <li>
-                            <svg class="chevron-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="9 18 15 12 9 6"></polyline>
-                            </svg>
-                            3D Küchenplanung 
-                        </li>
-                    </ul>
-                    <div class="scan-line"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <footer>
+    <footer role="contentinfo">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-links">
+                <nav class="footer-links" aria-label="Projekt Links">
                     <a href="https://checkcar.app" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://checkcar.app', 'CheckCar Footer');">CheckCar</a>
                     <a href="https://fragally.de" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://fragally.de', 'FragAlly Footer');">FragAlly</a>
                     <a href="https://grundrissratgeber.de" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackExternalLink !== 'undefined') trackExternalLink('https://grundrissratgeber.de', 'Grundrissratgeber Footer');">Grundrissratgeber</a>
-                    <span class="footer-divider">|</span>
+                    <span class="footer-divider" aria-hidden="true">|</span>
                     <a href="https://www.linkedin.com/in/mathias-schulz-191890ab/" target="_blank" rel="noopener noreferrer" onclick="if (typeof trackLinkedInClick !== 'undefined') trackLinkedInClick();">LinkedIn</a>
-                    <span class="footer-divider">|</span>
-                    <a href="#impressum" class="impressum-link" onclick="if (typeof trackImpressumView !== 'undefined') trackImpressumView();">Impressum</a>
-                </div>
+                    <span class="footer-divider" aria-hidden="true">|</span>
+                    <a href="#impressum" class="impressum-link" onclick="if (typeof trackImpressumView !== 'undefined') trackImpressumView();">Impressum & Datenschutz</a>
+                </nav>
                 <p class="footer-copyright">
                     © 2026 KI-ProjexX.de - Alle Rechte vorbehalten
                 </p>
             </div>
             
-            <div id="impressum" class="impressum-section">
-                <h3 class="impressum-title">Impressum</h3>
+            <section id="impressum" class="impressum-section" aria-labelledby="impressum-title">
+                <h3 id="impressum-title" class="impressum-title">Impressum & Datenschutz</h3>
                 <div class="impressum-content">
+                    <p><strong>Angaben gemäß § 5 TMG:</strong></p>
                     <p><strong>KI-ProjexX</strong></p>
                     <p>Mathias Schulz</p>
                     <p>Haidbarg 30B</p>
@@ -1352,12 +1641,51 @@
                     <p class="impressum-email">
                         E-Mail: <span class="email-protected">mathias<span class="spam-protect">&#64;</span>ki-projexx<span class="spam-protect">&#46;</span>de</span>
                     </p>
+                    <br>
+                    <p><strong>Datenschutz:</strong></p>
+                    <p>Diese Website verwendet Google Analytics mit aktivierter IP-Anonymisierung. Die Erfassung erfolgt nur mit Ihrer Einwilligung. Sie können Ihre Einwilligung jederzeit widerrufen.</p>
                 </div>
-            </div>
+            </section>
         </div>
     </footer>
 
     <script>
+        // Cookie Consent Management
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookie_consent');
+            if (consent === null) {
+                document.getElementById('cookie-banner').classList.add('show');
+            }
+        }
+
+        function acceptCookies() {
+            localStorage.setItem('cookie_consent', 'true');
+            localStorage.setItem('analytics_consent', 'true');
+            document.getElementById('cookie-banner').classList.remove('show');
+            
+            // Load Google Analytics
+            var gaScript = document.createElement('script');
+            gaScript.async = true;
+            gaScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3CBJQ2Y0CS';
+            document.head.appendChild(gaScript);
+            
+            gtag('js', new Date());
+            gtag('config', 'G-3CBJQ2Y0CS', {
+                'anonymize_ip': true,
+                'cookie_flags': 'SameSite=None;Secure'
+            });
+            
+            console.log('🍪 Cookies akzeptiert - Analytics aktiviert');
+        }
+
+        function declineCookies() {
+            localStorage.setItem('cookie_consent', 'false');
+            localStorage.setItem('analytics_consent', 'false');
+            document.getElementById('cookie-banner').classList.remove('show');
+            console.log('🍪 Nur notwendige Cookies - Analytics deaktiviert');
+        }
+
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1384,8 +1712,19 @@
             observer.observe(heroStats);
         }
 
-        document.querySelectorAll('.project-card').forEach(card => {
-            card.style.cursor = 'pointer';
+        // Make project cards keyboard accessible
+        document.querySelectorAll('.project-card, .service-card').forEach(card => {
+            card.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    this.click();
+                }
+            });
+        });
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', function() {
+            checkCookieConsent();
         });
     </script>
 </body>
