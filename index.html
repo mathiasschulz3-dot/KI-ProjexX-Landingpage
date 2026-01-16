@@ -7,8 +7,8 @@
     <!-- Primary Meta Tags -->
     <title>KI-ProjexX - KI-Beratung Hamburg, Nordheide & Lüneburger Heide | AI Marketing & Kommunikation</title>
     <meta name="title" content="KI-ProjexX - KI-Beratung Hamburg, Nordheide & Lüneburger Heide">
-    <meta name="description" content="KI-Beratung für Marketing, Werbung & Kommunikation in Hamburg, Buchholz, Nordheide. Ihr AI-Berater für digitale Transformation, KI-Workshops und EU AI Act Compliance in Norddeutschland.">
-    <meta name="keywords" content="KI-Beratung Hamburg, KI Berater Nordheide, KI Consulting Buchholz, AI Marketing, KI in der Werbung, KI Kommunikation, KI Workshop Lüneburger Heide, Künstliche Intelligenz 21244, KI Beratung Marketing, AI Consultant Norddeutschland">
+    <meta name="description" content="IHK-zertifizierte KI-Beratung für Marketing, Werbung & Kommunikation in Hamburg, Buchholz, Nordheide. KI-Manager (IHK) für digitale Transformation, KI-Workshops und EU AI Act Compliance in Norddeutschland.">
+    <meta name="keywords" content="KI-Beratung Hamburg, KI Berater Nordheide, KI Consulting Buchholz, AI Marketing, KI in der Werbung, KI Kommunikation, KI Workshop Lüneburger Heide, Künstliche Intelligenz 21244, KI Beratung Marketing, AI Consultant Norddeutschland, IHK-zertifiziert, KI-Manager IHK, IHK KI-Berater, zertifizierte KI-Beratung">
     <meta name="author" content="Mathias Schulz">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ki-projexx.de">
@@ -23,7 +23,7 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ki-projexx.de">
     <meta property="og:title" content="KI-ProjexX - KI-Beratung Hamburg & Nordheide | AI Marketing Spezialist">
-    <meta property="og:description" content="Innovative KI-Lösungen für Marketing, Werbung & Kommunikation. Ihr AI-Berater in Hamburg, Buchholz und der Lüneburger Heide. Workshops, Consulting & EU AI Act Compliance.">
+    <meta property="og:description" content="IHK-zertifizierte KI-Lösungen für Marketing, Werbung & Kommunikation. KI-Manager (IHK) in Hamburg, Buchholz und der Lüneburger Heide. Workshops, Consulting & EU AI Act Compliance.">
     <meta property="og:image" content="https://ki-projexx.de/og-image.jpg">
     <meta property="og:locale" content="de_DE">
     <meta property="og:site_name" content="KI-ProjexX">
@@ -195,7 +195,7 @@
       "@type": "ProfessionalService",
       "name": "KI-ProjexX",
       "image": "https://ki-projexx.de/logo.png",
-      "description": "KI-Beratung für Marketing, Werbung und Kommunikation in Hamburg, Buchholz, Nordheide und Lüneburger Heide. Spezialisiert auf AI-Transformation, Workshops und EU AI Act Compliance.",
+      "description": "IHK-zertifizierte KI-Beratung für Marketing, Werbung und Kommunikation in Hamburg, Buchholz, Nordheide und Lüneburger Heide. KI-Manager (IHK) spezialisiert auf AI-Transformation, Workshops und EU AI Act Compliance.",
       "url": "https://ki-projexx.de",
       "telephone": "+49-XXX-XXXXXXX",
       "email": "mathias@ki-projexx.de",
@@ -238,7 +238,17 @@
       "founder": {
         "@type": "Person",
         "name": "Mathias Schulz",
-        "jobTitle": "KI-Berater & AI Consultant",
+        "jobTitle": "KI-Manager (IHK) & AI Consultant",
+        "hasCredential": {
+          "@type": "EducationalOccupationalCredential",
+          "credentialCategory": "Certificate",
+          "name": "KI-Manager/-in (IHK)",
+          "issuedBy": {
+            "@type": "Organization",
+            "name": "IHK zu Essen"
+          },
+          "url": "https://badges.ihk-kompetenz.plus/assertion/faa969d7-54c2-42c2-8a49-45cc8b421fdd?id=U2FsdGVkX19O3YFifEpTv4oFcji2ocm8fZ7mXUM6fgZu8qZSTK1p2HHfCoAPEsSa"
+        },
         "sameAs": "https://www.linkedin.com/in/mathias-schulz-191890ab/"
       },
       "sameAs": [
@@ -316,6 +326,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Die Kosten für KI-Beratung variieren je nach Projektumfang. Ein kostenloses Erstgespräch hilft, Ihre individuellen Anforderungen zu ermitteln und ein passendes Angebot zu erstellen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist der KI-Berater IHK-zertifiziert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, Mathias Schulz ist IHK-zertifizierter KI-Manager (IHK zu Essen) und verfügt über 20+ Jahre Erfahrung in Marketing, Werbung und Kommunikation. Die Zertifizierung garantiert professionelle Standards und fundiertes KI-Wissen."
           }
         },
         {
@@ -677,6 +695,49 @@
             width: 20px;
             height: 20px;
             stroke: hsl(var(--accent));
+        }
+
+        /* IHK Badge Special Styling */
+        .trust-badge-ihk {
+            padding: 1rem 1.5rem;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 100, 100, 0.1));
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            gap: 1rem;
+        }
+
+        .trust-badge-ihk:hover {
+            border-color: hsl(var(--accent));
+            box-shadow: var(--shadow-accent);
+            transform: translateY(-4px);
+        }
+
+        .ihk-badge-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.3));
+        }
+
+        .ihk-badge-text {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .ihk-badge-text strong {
+            color: rgb(var(--foreground));
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        .ihk-badge-text span {
+            color: hsl(var(--accent));
+            font-size: 0.75rem;
+            font-family: 'JetBrains Mono', monospace;
         }
 
         .section-header {
@@ -1217,6 +1278,23 @@
             .trust-badges {
                 gap: 1rem;
             }
+
+            .trust-badge-ihk {
+                padding: 0.75rem 1rem;
+            }
+
+            .ihk-badge-img {
+                width: 48px;
+                height: 48px;
+            }
+
+            .ihk-badge-text strong {
+                font-size: 0.75rem;
+            }
+
+            .ihk-badge-text span {
+                font-size: 0.625rem;
+            }
         }
 
         @media (min-width: 769px) {
@@ -1273,7 +1351,7 @@
             </h1>
 
             <p class="hero-subtitle">
-                Ihr KI-Berater für Marketing, Werbung & Kommunikation, based in Buchholz/Nordheide/Hamburg.
+                Ihr IHK-zertifizierter KI-Berater für Marketing, Werbung & Kommunikation, based in Buchholz/Nordheide/Hamburg.
             </p>
 
             <div class="hero-stats" role="list" aria-label="Unternehmenskennzahlen">
@@ -1293,6 +1371,13 @@
 
             <!-- Trust Badges -->
             <div class="trust-badges" role="list" aria-label="Vertrauensmerkmale">
+                <a href="https://badges.ihk-kompetenz.plus/assertion/faa969d7-54c2-42c2-8a49-45cc8b421fdd?id=U2FsdGVkX19O3YFifEpTv4oFcji2ocm8fZ7mXUM6fgZu8qZSTK1p2HHfCoAPEsSa" target="_blank" rel="noopener noreferrer" class="trust-badge trust-badge-ihk" role="listitem" aria-label="IHK-zertifizierter KI-Manager">
+                    <img src="/IHK_Badge.png" alt="IHK-Zertifikat: KI-Manager/-in (IHK) - IHK zu Essen" class="ihk-badge-img">
+                    <div class="ihk-badge-text">
+                        <strong>IHK-Zertifiziert</strong>
+                        <span>KI-Manager/-in (IHK)</span>
+                    </div>
+                </a>
                 <div class="trust-badge" role="listitem">
                     <svg class="trust-badge-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
                         <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
