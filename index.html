@@ -451,7 +451,7 @@
                 0 0 60px hsla(180, 100%, 50%, 0.3);
             pointer-events: none;
             z-index: 9999;
-            animation: scanLine 8s linear infinite;
+            animation: scanLine 20s ease-in-out 1;
         }
 
         body::after {
@@ -1607,10 +1607,10 @@
             <!-- CTA Buttons -->
             <div class="hero-cta-buttons">
                 <a href="/ki-readiness-check.html" class="btn" onclick="if (typeof trackReadinessCheckClick !== 'undefined') trackReadinessCheckClick();">
-                    🎯 KI-Readiness Check (90 Sek)
+                    KI-Readiness Check (90 Sek)
                 </a>
-                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();">
-                    📅 Termin buchen
+                <a href="https://calendly.com/mathias-schulz3/neues-meeting?month=2026-01" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();">
+                    Termin buchen
                 </a>
             </div>
 
@@ -1644,20 +1644,6 @@
                         <polyline points="12 6 12 12 16 14"></polyline>
                     </svg>
                     <span>20+ Jahre Expertise</span>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta-section" aria-labelledby="cta-title">
-            <div class="container">
-                <div class="cta-box reveal">
-                    <h2 id="cta-title" class="cta-title">Bereit für Ihre KI-Transformation?</h2>
-                    <p class="cta-description">
-                        Buchen Sie jetzt ein kostenloses Erstgespräch und erfahren Sie, wie KI Ihr Business auf das nächste Level bringen kann
-                    </p>
-                    <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="cta-button" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();" aria-label="Termin für kostenloses Erstgespräch vereinbaren">
-                        Termin vereinbaren
-                    </a>
                 </div>
             </div>
         </section>
@@ -1726,7 +1712,7 @@
                                     <path d="M12 16v-4M12 8h.01"></path>
                                 </svg>
                             </div>
-                            <h3 class="service-title">KI Readiness Check 🎯</h3>
+                            <h3 class="service-title">KI Readiness Check</h3>
                         </div>
                         <p class="service-description">
                             <strong>NEU:</strong> In 90 Sekunden herausfinden, wie KI-ready Ihr Unternehmen ist. Kostenloser Quick-Check mit Sofort-Auswertung und konkreten Handlungsempfehlungen.
