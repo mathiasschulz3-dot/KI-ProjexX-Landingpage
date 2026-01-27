@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary Meta Tags -->
+    <title>KI-Readiness Quick Check | Kostenloser AI-Test für Unternehmen | KI-ProjexX</title>
+    <meta name="title" content="KI-Readiness Quick Check | Kostenloser AI-Test für Unternehmen">
+    <meta name="description" content="In 90 Sekunden herausfinden, wie KI-ready Ihr Unternehmen ist. Kostenloser Quick Check vom IHK-zertifizierten KI-Berater. Sofort-Auswertung mit konkreten Handlungsempfehlungen.">
+    <meta name="keywords" content="KI Readiness Check, AI Readiness Assessment, KI-Reifegrad Test, Unternehmen KI-bereit, KI Potenzial prüfen, Hamburg Nordheide">
+    <meta name="author" content="Mathias Schulz, KI-ProjexX">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ki-projexx.de/ki-readiness-check.html">
+    
+    <!-- Geo Targeting -->
+    <meta name="geo.region" content="DE-NI">
+    <meta name="geo.placename" content="Buchholz in der Nordheide">
+    <meta name="geo.position" content="53.3264;9.8692">
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ki-projexx.de/ki-readiness-check.html">
+    <meta property="og:title" content="KI-Readiness Quick Check - In 90 Sekunden wissen, wo Sie stehen">
+    <meta property="og:description" content="Kostenloser KI-Readiness Test vom IHK-zertifizierten AI-Berater. Sofort-Auswertung mit Handlungsempfehlungen für Ihr Unternehmen.">
+    <meta property="og:image" content="https://ki-projexx.de/og-readiness-check.jpg">
+    <meta property="og:locale" content="de_DE">
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "KI-Readiness Quick Check",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web Browser",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "EUR"
+      },
+      "provider": {
+        "@type": "ProfessionalService",
+        "name": "KI-ProjexX",
+        "url": "https://ki-projexx.de"
+      },
+      "description": "Kostenloser KI-Readiness Assessment Test für Unternehmen. In 90 Sekunden herausfinden, wie KI-bereit Ihr Unternehmen ist.",
+      "audience": {
+        "@type": "BusinessAudience",
+        "audienceType": "Small and Medium Businesses"
+      }
+    }
+    </script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --background: 10 10 15;
+            --foreground: 250 250 252;
+            --accent: 180 100% 50%;
+            --muted: 180 5% 60%;
+            --border: 180 10% 25%;
+            --glass: rgba(20, 25, 35, 0.7);
+            --shadow-accent: 0 0 20px hsla(180, 100%, 50%, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: rgb(var(--background));
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            color: rgb(var(--foreground));
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated scan line */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                hsla(180, 100%, 50%, 0.3) 20%, 
+                hsla(180, 100%, 50%, 0.8) 50%, 
+                hsla(180, 100%, 50%, 0.3) 80%, 
+                transparent 100%
+            );
+            box-shadow: 
+                0 0 20px hsla(180, 100%, 50%, 0.8),
+                0 0 40px hsla(180, 100%, 50%, 0.5);
+            pointer-events: none;
+            z-index: 9999;
+            animation: scanLine 8s linear infinite;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, hsla(180, 100%, 50%, 0.15) 0%, transparent 70%);
+            top: -300px;
+            right: -300px;
+            pointer-events: none;
+            z-index: 0;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes scanLine {
+            0% { top: -5%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 105%; opacity: 0; }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(-50px, 100px) scale(1.1); }
+            66% { transform: translate(50px, -50px) scale(0.9); }
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Back Button */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: hsl(var(--accent));
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-family: 'JetBrains Mono', monospace;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            gap: 0.75rem;
+            filter: brightness(1.2);
+        }
+
+        .back-link svg {
+            width: 16px;
+            height: 16px;
+            stroke: hsl(var(--accent));
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .header h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, hsl(var(--accent)) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            color: hsl(var(--muted));
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .emoji {
+            font-size: 1.3em;
+            margin-left: 8px;
+        }
+
+        /* Glassmorphism Card */
+        .card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Progress Bar */
+        .progress-container {
+            margin-bottom: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .progress-text {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: hsl(var(--accent));
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .progress-percentage {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: rgb(var(--foreground));
+        }
+
+        .progress-bar-bg {
+            height: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, hsl(var(--accent)) 0%, hsl(200, 100%, 70%) 100%);
+            border-radius: 20px;
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            box-shadow: 0 0 20px hsla(180, 100%, 50%, 0.5);
+        }
+
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Step: Company Info */
+        .company-info {
+            animation: fadeIn 0.6s ease;
+        }
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: rgb(var(--foreground));
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.75rem;
+        }
+
+        .form-group select,
+        .form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            border-radius: 12px;
+            color: rgb(var(--foreground));
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .form-group select:focus,
+        .form-group input:focus {
+            outline: none;
+            border-color: hsl(var(--accent));
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 3px rgba(0, 255, 255, 0.1);
+        }
+
+        .form-group select option {
+            background: rgb(var(--background));
+            color: rgb(var(--foreground));
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        /* Question Card */
+        .question-card {
+            animation: fadeInScale 0.6s ease;
+        }
+
+        .question-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: hsl(var(--accent));
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+        }
+
+        .question-text {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .question-subtitle {
+            font-size: 1rem;
+            color: hsl(var(--muted));
+            margin-bottom: 32px;
+            font-style: italic;
+        }
+
+        /* Answer Options */
+        .answers {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .answer-option {
+            background: rgba(255, 255, 255, 0.03);
+            border: 2px solid rgba(0, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .answer-option::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .answer-option:hover::before {
+            left: 100%;
+        }
+
+        .answer-option:hover {
+            border-color: hsla(180, 100%, 50%, 0.5);
+            background: rgba(0, 255, 255, 0.08);
+            transform: translateX(8px);
+        }
+
+        .answer-option.selected {
+            border-color: hsl(var(--accent));
+            background: rgba(0, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+
+        .answer-option input[type="radio"] {
+            display: none;
+        }
+
+        .answer-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1rem;
+            line-height: 1.5;
+            cursor: pointer;
+        }
+
+        .answer-radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 50%;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .answer-option.selected .answer-radio {
+            border-color: hsl(var(--accent));
+            background: hsl(var(--accent));
+        }
+
+        .answer-option.selected .answer-radio::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(var(--background));
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 16px 32px;
+            background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(200, 100%, 60%) 100%);
+            color: rgb(var(--background));
+            border: none;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px hsla(180, 100%, 50%, 0.3);
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px hsla(180, 100%, 50%, 0.5);
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            box-shadow: none;
+            color: rgb(var(--foreground));
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 16px;
+            margin-top: 32px;
+            justify-content: center;
+        }
+
+        /* Results */
+        .results {
+            text-align: center;
+            animation: fadeInScale 0.8s ease;
+        }
+
+        .score-display {
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .score-circle {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .score-number {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Inter', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(200, 100%, 70%) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-circle svg {
+            transform: rotate(-90deg);
+        }
+
+        .score-circle circle {
+            fill: none;
+            stroke-width: 12;
+        }
+
+        .score-bg {
+            stroke: rgba(255, 255, 255, 0.1);
+        }
+
+        .score-progress {
+            stroke: url(#scoreGradient);
+            stroke-linecap: round;
+            transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .result-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin: 24px 0 16px;
+        }
+
+        .result-description {
+            font-size: 1.2rem;
+            color: hsl(var(--muted));
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .cta-section {
+            background: rgba(0, 255, 255, 0.08);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 16px;
+            padding: 32px;
+            margin-top: 40px;
+        }
+
+        .cta-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: hsl(var(--accent));
+            position: absolute;
+            animation: confetti-fall 3s ease-out forwards;
+        }
+
+        @keyframes confetti-fall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 16px;
+            }
+
+            .card {
+                padding: 24px 20px;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .header p {
+                font-size: 1rem;
+            }
+
+            .question-text {
+                font-size: 1.3rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .score-circle {
+                width: 160px;
+                height: 160px;
+            }
+
+            .score-number {
+                font-size: 3rem;
+            }
+
+            .result-title {
+                font-size: 2rem;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/" class="back-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+            Zurück zur Startseite
+        </a>
+
+        <div class="header">
+            <h1>KI-Readiness Quick Check<span class="emoji">🚀</span></h1>
+            <p>In 90 Sekunden erfahren, wie KI-ready dein Unternehmen wirklich ist</p>
+        </div>
+
+        <!-- Progress Bar -->
+        <div class="progress-container" id="progressContainer" style="display: none;">
+            <div class="progress-info">
+                <span class="progress-text" id="progressText">Auf geht's! 🚀</span>
+                <span class="progress-percentage" id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <div class="card">
+            <!-- Step 1: Company Info -->
+            <div id="step-company" class="company-info">
+                <div class="question-number">// Los geht's</div>
+                <h2 class="question-text">Erst mal kennenlernen 👋</h2>
+                <p class="question-subtitle">Damit wir die Auswertung passend machen können</p>
+
+                <div class="form-group">
+                    <label for="industry">Eure Branche</label>
+                    <select id="industry" required>
+                        <option value="">Bitte wählen...</option>
+                        <option value="it">IT & Software</option>
+                        <option value="manufacturing">Produktion & Fertigung</option>
+                        <option value="retail">Handel & E-Commerce</option>
+                        <option value="services">Dienstleistungen</option>
+                        <option value="healthcare">Gesundheit & Pflege</option>
+                        <option value="construction">Bau & Handwerk</option>
+                        <option value="finance">Finanz & Versicherung</option>
+                        <option value="marketing">Marketing & Werbung</option>
+                        <option value="logistics">Logistik & Transport</option>
+                        <option value="gastronomy">Gastronomie & Hotel</option>
+                        <option value="education">Bildung & Training</option>
+                        <option value="other">Andere</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="employeesMin">Mitarbeiter von</label>
+                        <input type="number" id="employeesMin" placeholder="z.B. 10" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employeesMax">bis</label>
+                        <input type="number" id="employeesMax" placeholder="z.B. 50" min="1" required>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn" onclick="startQuiz()">Check starten</button>
+                </div>
+            </div>
+
+            <!-- Step 2-9: Questions -->
+            <div id="step-questions" class="question-card hidden">
+                <div class="question-number" id="questionNumber">// Frage 1 von 8</div>
+                <h2 class="question-text" id="questionText"></h2>
+                <p class="question-subtitle" id="questionSubtitle"></p>
+
+                <div class="answers" id="answersContainer"></div>
+
+                <div class="button-group">
+                    <button class="btn btn-secondary" onclick="previousQuestion()" id="btnPrevious" style="display: none;">
+                        ← Zurück
+                    </button>
+                    <button class="btn" onclick="nextQuestion()" id="btnNext" disabled>
+                        Weiter →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Step 10: Results -->
+            <div id="step-results" class="results hidden">
+                <div class="question-number">// Dein Ergebnis</div>
+                
+                <div class="score-display">
+                    <div class="score-circle">
+                        <svg width="200" height="200">
+                            <defs>
+                                <linearGradient id="scoreGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:hsl(180, 100%, 50%);stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:hsl(200, 100%, 70%);stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle class="score-bg" cx="100" cy="100" r="90"></circle>
+                            <circle class="score-progress" cx="100" cy="100" r="90" 
+                                    stroke-dasharray="565.48" 
+                                    stroke-dashoffset="565.48"
+                                    id="scoreCircle"></circle>
+                        </svg>
+                        <div class="score-number" id="scoreNumber">0%</div>
+                    </div>
+                </div>
+
+                <h2 class="result-title" id="resultTitle"></h2>
+                <p class="result-description" id="resultDescription"></p>
+
+                <div class="cta-section">
+                    <h3 class="cta-title">Wie komme ich auf 100%? 🎯</h3>
+                    <p style="color: hsl(var(--muted)); margin-bottom: 24px;">
+                        Lass uns gemeinsam deinen konkreten Fahrplan entwickeln
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="https://calendly.com/mathias-ki-projexx" target="_blank" class="btn">
+                            📅 Termin buchen
+                        </a>
+                        <a href="mailto:mathias@ki-projexx.de?subject=KI-Readiness Check - Beratungstermin" class="btn btn-secondary">
+                            ✉️ Email schreiben
+                        </a>
+                    </div>
+                </div>
+
+                <div class="button-group" style="margin-top: 32px;">
+                    <button class="btn btn-secondary" onclick="resetQuiz()">
+                        🔄 Nochmal machen
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Questions Data
+        const questions = [
+            {
+                question: "Datenzentrale 🎯",
+                subtitle: "Wo liegen eure wichtigsten Geschäftsdaten?",
+                answers: [
+                    { text: "In EINEM zentralen System", score: 100 },
+                    { text: "In 2-3 verschiedenen Systemen", score: 50 },
+                    { text: "Excel, Word und im Kopf von Klaus", score: 0 }
+                ]
+            },
+            {
+                question: "Daten-Verantwortung 👤",
+                subtitle: "Wer kümmert sich um Datenqualität?",
+                answers: [
+                    { text: "Eine konkrete Person mit Mandat", score: 100 },
+                    { text: '"Die IT halt"', score: 50 },
+                    { text: '"Alle" / "Weiß nicht"', score: 0 }
+                ]
+            },
+            {
+                question: "Letzter Frühjahrsputz 🧹",
+                subtitle: "Wann wurden Daten zuletzt bereinigt?",
+                answers: [
+                    { text: "Regelmäßig/Kürzlich", score: 100 },
+                    { text: "Vor 1-2 Jahren", score: 50 },
+                    { text: "Noch nie passiert", score: 0 }
+                ]
+            },
+            {
+                question: "Zeitfresser-Bewusstsein ⏱️",
+                subtitle: "Wo verliert ihr täglich die meiste Zeit?",
+                answers: [
+                    { text: "Wissen wir genau (Liste liegt vor)", score: 100 },
+                    { text: "Haben so eine Ahnung", score: 50 },
+                    { text: "Läuft halt wie's läuft", score: 0 }
+                ]
+            },
+            {
+                question: "Initiative-Ursprung 💡",
+                subtitle: "Wie entstehen bei euch Digitalisierungs-Projekte?",
+                answers: [
+                    { text: "Fachabteilung meldet konkretes Problem", score: 100 },
+                    { text: "Management beschließt von oben", score: 50 },
+                    { text: "Haben noch nie was probiert", score: 0 }
+                ]
+            },
+            {
+                question: "Quick Win Fähigkeit 🎯",
+                subtitle: "Könntet ihr einen Erfolg in 4 Wochen messen?",
+                answers: [
+                    { text: "Ja klar, haben konkrete Ideen", score: 100 },
+                    { text: "Mit Unterstützung vielleicht", score: 50 },
+                    { text: "Eher unrealistisch", score: 0 }
+                ]
+            },
+            {
+                question: "Leidensdruck-Sensor 📢",
+                subtitle: "Wer klagt am lautesten über manuelle Arbeit?",
+                answers: [
+                    { text: "Fachabteilungen, täglich", score: 100 },
+                    { text: "IT, gelegentlich", score: 50 },
+                    { text: "Alles eigentlich ok", score: 0 }
+                ]
+            },
+            {
+                question: "Team-Einstellung 💭",
+                subtitle: "Was denken eure Mitarbeiter über KI-Tools?",
+                answers: [
+                    { text: '"Endlich! Kann das den Papierkram übernehmen?"', score: 100 },
+                    { text: '"Mal sehen... brauchen wir das wirklich?"', score: 50 },
+                    { text: '"Auf keinen Fall! Das nimmt uns die Jobs weg!"', score: 0 }
+                ]
+            }
+        ];
+
+        const progressMessages = [
+            { max: 12, text: "Auf geht's! 🚀" },
+            { max: 25, text: "Läuft! 💪" },
+            { max: 37, text: "Guter Start! ✨" },
+            { max: 50, text: "Jetzt wird's spannend! 🎯" },
+            { max: 62, text: "Über die Hälfte! 🎉" },
+            { max: 75, text: "Fast da! 🏃" },
+            { max: 87, text: "Nur noch ein paar Klicks! ⚡" },
+            { max: 99, text: "Gleich geschafft! 🎊" },
+            { max: 100, text: "Auswertung läuft... 🔮" }
+        ];
+
+        // State
+        let currentQuestion = 0;
+        let answers = [];
+        let companyData = {};
+
+        // Start Quiz
+        function startQuiz() {
+            const industry = document.getElementById('industry').value;
+            const employeesMin = document.getElementById('employeesMin').value;
+            const employeesMax = document.getElementById('employeesMax').value;
+
+            if (!industry || !employeesMin || !employeesMax) {
+                alert('Bitte alle Felder ausfüllen');
+                return;
+            }
+
+            if (parseInt(employeesMin) > parseInt(employeesMax)) {
+                alert('Die Mindestanzahl muss kleiner als die Maximalanzahl sein');
+                return;
+            }
+
+            companyData = { industry, employeesMin, employeesMax };
+            
+            document.getElementById('step-company').classList.add('hidden');
+            document.getElementById('step-questions').classList.remove('hidden');
+            document.getElementById('progressContainer').style.display = 'block';
+            
+            showQuestion(0);
+        }
+
+        // Show Question
+        function showQuestion(index) {
+            currentQuestion = index;
+            const question = questions[index];
+            
+            document.getElementById('questionNumber').textContent = `// Frage ${index + 1} von ${questions.length}`;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('questionSubtitle').textContent = question.subtitle;
+            
+            const answersContainer = document.getElementById('answersContainer');
+            answersContainer.innerHTML = '';
+            
+            question.answers.forEach((answer, i) => {
+                const isSelected = answers[index] === i;
+                const div = document.createElement('div');
+                div.className = `answer-option ${isSelected ? 'selected' : ''}`;
+                div.onclick = () => selectAnswer(i);
+                div.innerHTML = `
+                    <label class="answer-label">
+                        <div class="answer-radio"></div>
+                        <span>${answer.text}</span>
+                    </label>
+                `;
+                answersContainer.appendChild(div);
+            });
+
+            // Update buttons
+            document.getElementById('btnPrevious').style.display = index > 0 ? 'inline-block' : 'none';
+            document.getElementById('btnNext').disabled = answers[index] === undefined;
+            document.getElementById('btnNext').textContent = index === questions.length - 1 ? 'Ergebnis anzeigen →' : 'Weiter →';
+
+            // Update progress
+            updateProgress();
+        }
+
+        // Select Answer
+        function selectAnswer(answerIndex) {
+            answers[currentQuestion] = answerIndex;
+            
+            // Update UI
+            document.querySelectorAll('.answer-option').forEach((el, i) => {
+                el.classList.toggle('selected', i === answerIndex);
+            });
+            
+            document.getElementById('btnNext').disabled = false;
+        }
+
+        // Navigation
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                showQuestion(currentQuestion + 1);
+            } else {
+                showResults();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                showQuestion(currentQuestion - 1);
+            }
+        }
+
+        // Update Progress
+        function updateProgress() {
+            const progress = ((currentQuestion + 1) / questions.length) * 100;
+            document.getElementById('progressBarFill').style.width = progress + '%';
+            document.getElementById('progressPercentage').textContent = Math.round(progress) + '%';
+            
+            const message = progressMessages.find(m => progress <= m.max);
+            if (message) {
+                document.getElementById('progressText').textContent = message.text;
+            }
+        }
+
+        // Calculate Score
+        function calculateScore() {
+            let totalScore = 0;
+            answers.forEach((answerIndex, questionIndex) => {
+                totalScore += questions[questionIndex].answers[answerIndex].score;
+            });
+            return Math.round(totalScore / questions.length);
+        }
+
+        // Show Results
+        function showResults() {
+            const score = calculateScore();
+            
+            document.getElementById('step-questions').classList.add('hidden');
+            document.getElementById('step-results').classList.remove('hidden');
+            document.getElementById('progressContainer').style.display = 'none';
+
+            // Animate score
+            setTimeout(() => {
+                animateScore(score);
+            }, 300);
+
+            // Set result text
+            let title, description, emoji;
+            
+            if (score >= 80) {
+                emoji = '🚀';
+                title = 'KI-Ready!';
+                description = 'Glückwunsch! Ihr habt solide Grundlagen. Zeit für Quick Wins und konkrete KI-Implementierung!';
+                triggerConfetti();
+            } else if (score >= 60) {
+                emoji = '💪';
+                title = 'Gute Basis!';
+                description = 'Mit gezielter Vorarbeit seid ihr in 4-8 Wochen startklar. Ein Readiness Assessment zeigt euch den konkreten Weg.';
+            } else if (score >= 40) {
+                emoji = '📋';
+                title = 'Potenzial vorhanden!';
+                description = 'Hausaufgaben nötig - aber machbar mit der richtigen Strategie! Lasst uns über Prozesse und Quick Wins reden.';
+            } else {
+                emoji = '🧹';
+                title = 'Erst aufräumen!';
+                description = 'Ehrliche Antwort: KI wäre aktuell Geldverbrennung. Aber: Mit strukturierter Vorbereitung kommt ihr da hin. Lasst uns über Basics reden.';
+            }
+
+            document.getElementById('resultTitle').innerHTML = title + ' <span class="emoji">' + emoji + '</span>';
+            document.getElementById('resultDescription').textContent = description;
+        }
+
+        // Animate Score Circle
+        function animateScore(score) {
+            const circle = document.getElementById('scoreCircle');
+            const scoreNumber = document.getElementById('scoreNumber');
+            const circumference = 2 * Math.PI * 90;
+            const offset = circumference - (score / 100) * circumference;
+            
+            let currentScore = 0;
+            const duration = 1500;
+            const steps = 60;
+            const increment = score / steps;
+            const stepDuration = duration / steps;
+
+            const interval = setInterval(() => {
+                currentScore += increment;
+                if (currentScore >= score) {
+                    currentScore = score;
+                    clearInterval(interval);
+                }
+                scoreNumber.textContent = Math.round(currentScore) + '%';
+            }, stepDuration);
+
+            setTimeout(() => {
+                circle.style.strokeDashoffset = offset;
+            }, 100);
+        }
+
+        // Confetti Effect
+        function triggerConfetti() {
+            const colors = ['hsl(180, 100%, 50%)', 'hsl(200, 100%, 70%)', 'hsl(160, 100%, 60%)', 'hsl(220, 100%, 60%)'];
+            for (let i = 0; i < 50; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.animationDelay = Math.random() * 0.3 + 's';
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), 3000);
+                }, i * 30);
+            }
+        }
+
+        // Reset Quiz
+        function resetQuiz() {
+            currentQuestion = 0;
+            answers = [];
+            companyData = {};
+            
+            document.getElementById('step-results').classList.add('hidden');
+            document.getElementById('step-company').classList.remove('hidden');
+            document.getElementById('progressContainer').style.display = 'none';
+            
+            // Reset form
+            document.getElementById('industry').value = '';
+            document.getElementById('employeesMin').value = '';
+            document.getElementById('employeesMax').value = '';
+        }
+    </script>
+</body>
+</html>
