@@ -76,6 +76,16 @@
           console.log('📊 GA4 Event: calendly_click');
       }
       
+      function trackReadinessCheckClick() {
+          if (!hasAnalyticsConsent()) return;
+          gtag('event', 'readiness_check_click', {
+              'event_category': 'conversion',
+              'event_label': 'ki_readiness_check_start',
+              'value': 1
+          });
+          console.log('📊 GA4 Event: readiness_check_click');
+      }
+      
       function trackServiceClick(serviceName) {
           if (!hasAnalyticsConsent()) return;
           gtag('event', 'service_click', {
@@ -392,7 +402,7 @@
     }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
             --background: 10 10 15;
@@ -737,6 +747,50 @@
             letter-spacing: 0.1em;
             color: hsl(var(--muted));
             margin-top: 0.25rem;
+        }
+
+        /* Hero CTA Buttons */
+        .hero-cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-cta-buttons .btn {
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, hsl(var(--accent)) 0%, hsl(200, 100%, 60%) 100%);
+            color: rgb(var(--background));
+            text-decoration: none;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px hsla(180, 100%, 50%, 0.3);
+            display: inline-block;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero-cta-buttons .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px hsla(180, 100%, 50%, 0.5);
+        }
+
+        .hero-cta-buttons .btn-secondary {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            color: rgb(var(--foreground));
+            box-shadow: none;
+        }
+
+        .hero-cta-buttons .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
         }
 
         /* Trust badges section */
@@ -1408,6 +1462,14 @@
                 gap: 1.5rem;
             }
 
+            .hero-cta-buttons {
+                flex-direction: column;
+            }
+
+            .hero-cta-buttons .btn {
+                width: 100%;
+            }
+
             .services-grid,
             .projects-grid {
                 grid-template-columns: 1fr;
@@ -1542,6 +1604,16 @@
                 </div>
             </div>
 
+            <!-- CTA Buttons -->
+            <div class="hero-cta-buttons">
+                <a href="/ki-readiness-check.html" class="btn" onclick="if (typeof trackReadinessCheckClick !== 'undefined') trackReadinessCheckClick();">
+                    🎯 KI-Readiness Check (90 Sek)
+                </a>
+                <a href="https://calendly.com/mathias-schulz3/neues-meeting" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" onclick="if (typeof trackCalendlyClick !== 'undefined') trackCalendlyClick();">
+                    📅 Termin buchen
+                </a>
+            </div>
+
             <!-- Trust Badges -->
             <!-- WICHTIG: IHK_Badge.png muss im Root-Verzeichnis liegen! -->
             <!-- Bei Problemen siehe DEPLOYMENT.md für alternative Lösungen -->
@@ -1646,7 +1718,7 @@
                         </p>
                     </article>
 
-                    <article class="glass-card service-card reveal" role="listitem" onclick="if (typeof trackServiceClick !== 'undefined') trackServiceClick('KI Readiness Assessment');" tabindex="0">
+                    <article class="glass-card service-card reveal" role="listitem" onclick="window.location.href='/ki-readiness-check.html'; if (typeof trackReadinessCheckClick !== 'undefined') trackReadinessCheckClick();" tabindex="0" style="cursor: pointer; border: 2px solid rgba(0, 255, 255, 0.3);">
                         <div class="service-header">
                             <div class="service-icon" aria-hidden="true">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -1654,10 +1726,10 @@
                                     <path d="M12 16v-4M12 8h.01"></path>
                                 </svg>
                             </div>
-                            <h3 class="service-title">KI Readiness Assessment</h3>
+                            <h3 class="service-title">KI Readiness Check 🎯</h3>
                         </div>
                         <p class="service-description">
-                            Ermitteln Sie Ihren KI-Reifegrad und entwickeln Sie eine maßgeschneiderte Roadmap für Ihre KI-Transformation. Strukturierte Analyse und konkrete Handlungsempfehlungen für Prozessoptimierungen.
+                            <strong>NEU:</strong> In 90 Sekunden herausfinden, wie KI-ready Ihr Unternehmen ist. Kostenloser Quick-Check mit Sofort-Auswertung und konkreten Handlungsempfehlungen.
                         </p>
                     </article>
 
