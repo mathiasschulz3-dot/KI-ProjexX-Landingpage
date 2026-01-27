@@ -99,7 +99,7 @@
                 0 0 40px hsla(180, 100%, 50%, 0.5);
             pointer-events: none;
             z-index: 9999;
-            animation: scanLine 8s linear infinite;
+            animation: scanLine 20s ease-in-out 1;
         }
 
         body::after {
@@ -677,7 +677,7 @@
         </a>
 
         <div class="header">
-            <h1>KI-Readiness Quick Check<span class="emoji">🚀</span></h1>
+            <h1>KI-Readiness Quick Check</h1>
             <p>In 90 Sekunden erfahren, wie KI-ready dein Unternehmen wirklich ist</p>
         </div>
 
@@ -696,7 +696,7 @@
             <!-- Step 1: Company Info -->
             <div id="step-company" class="company-info">
                 <div class="question-number">// Los geht's</div>
-                <h2 class="question-text">Erst mal kennenlernen 👋</h2>
+                <h2 class="question-text">Erst mal kennenlernen</h2>
                 <p class="question-subtitle">Damit wir die Auswertung passend machen können</p>
 
                 <div class="form-group">
@@ -779,16 +779,16 @@
                 <p class="result-description" id="resultDescription"></p>
 
                 <div class="cta-section">
-                    <h3 class="cta-title">Wie komme ich auf 100%? 🎯</h3>
+                    <h3 class="cta-title">Wie komme ich auf 100%?</h3>
                     <p style="color: hsl(var(--muted)); margin-bottom: 24px;">
                         Lass uns gemeinsam deinen konkreten Fahrplan entwickeln
                     </p>
                     <div class="cta-buttons">
-                        <a href="https://calendly.com/mathias-ki-projexx" target="_blank" class="btn">
-                            📅 Termin buchen
+                        <a href="https://calendly.com/mathias-schulz3/neues-meeting?month=2026-01" target="_blank" class="btn">
+                            Termin buchen
                         </a>
                         <a href="mailto:mathias@ki-projexx.de?subject=KI-Readiness Check - Beratungstermin" class="btn btn-secondary">
-                            ✉️ Email schreiben
+                            Email schreiben
                         </a>
                     </div>
                 </div>
@@ -806,7 +806,7 @@
         // Questions Data
         const questions = [
             {
-                question: "Datenzentrale 🎯",
+                question: "Datenzentrale",
                 subtitle: "Wo liegen eure wichtigsten Geschäftsdaten?",
                 answers: [
                     { text: "In EINEM zentralen System", score: 100 },
@@ -815,7 +815,7 @@
                 ]
             },
             {
-                question: "Daten-Verantwortung 👤",
+                question: "Daten-Verantwortung",
                 subtitle: "Wer kümmert sich um Datenqualität?",
                 answers: [
                     { text: "Eine konkrete Person mit Mandat", score: 100 },
@@ -824,7 +824,7 @@
                 ]
             },
             {
-                question: "Letzter Frühjahrsputz 🧹",
+                question: "Letzter Frühjahrsputz",
                 subtitle: "Wann wurden Daten zuletzt bereinigt?",
                 answers: [
                     { text: "Regelmäßig/Kürzlich", score: 100 },
@@ -833,7 +833,7 @@
                 ]
             },
             {
-                question: "Zeitfresser-Bewusstsein ⏱️",
+                question: "Zeitfresser-Bewusstsein",
                 subtitle: "Wo verliert ihr täglich die meiste Zeit?",
                 answers: [
                     { text: "Wissen wir genau (Liste liegt vor)", score: 100 },
@@ -842,7 +842,7 @@
                 ]
             },
             {
-                question: "Initiative-Ursprung 💡",
+                question: "Initiative-Ursprung",
                 subtitle: "Wie entstehen bei euch Digitalisierungs-Projekte?",
                 answers: [
                     { text: "Fachabteilung meldet konkretes Problem", score: 100 },
@@ -851,7 +851,7 @@
                 ]
             },
             {
-                question: "Quick Win Fähigkeit 🎯",
+                question: "Quick Win Fähigkeit",
                 subtitle: "Könntet ihr einen Erfolg in 4 Wochen messen?",
                 answers: [
                     { text: "Ja klar, haben konkrete Ideen", score: 100 },
@@ -860,7 +860,7 @@
                 ]
             },
             {
-                question: "Leidensdruck-Sensor 📢",
+                question: "Leidensdruck-Sensor",
                 subtitle: "Wer klagt am lautesten über manuelle Arbeit?",
                 answers: [
                     { text: "Fachabteilungen, täglich", score: 100 },
@@ -869,7 +869,7 @@
                 ]
             },
             {
-                question: "Team-Einstellung 💭",
+                question: "Team-Einstellung",
                 subtitle: "Was denken eure Mitarbeiter über KI-Tools?",
                 answers: [
                     { text: '"Endlich! Kann das den Papierkram übernehmen?"', score: 100 },
@@ -880,15 +880,15 @@
         ];
 
         const progressMessages = [
-            { max: 12, text: "Auf geht's! 🚀" },
-            { max: 25, text: "Läuft! 💪" },
-            { max: 37, text: "Guter Start! ✨" },
-            { max: 50, text: "Jetzt wird's spannend! 🎯" },
-            { max: 62, text: "Über die Hälfte! 🎉" },
-            { max: 75, text: "Fast da! 🏃" },
-            { max: 87, text: "Nur noch ein paar Klicks! ⚡" },
-            { max: 99, text: "Gleich geschafft! 🎊" },
-            { max: 100, text: "Auswertung läuft... 🔮" }
+            { max: 12, text: "Auf geht's" },
+            { max: 25, text: "Läuft" },
+            { max: 37, text: "Guter Start" },
+            { max: 50, text: "Jetzt wird's spannend" },
+            { max: 62, text: "Über die Hälfte" },
+            { max: 75, text: "Fast da" },
+            { max: 87, text: "Nur noch ein paar Klicks" },
+            { max: 99, text: "Gleich geschafft" },
+            { max: 100, text: "Auswertung läuft..." }
         ];
 
         // State
@@ -1018,28 +1018,24 @@
             }, 300);
 
             // Set result text
-            let title, description, emoji;
+            let title, description;
             
             if (score >= 80) {
-                emoji = '🚀';
                 title = 'KI-Ready!';
                 description = 'Glückwunsch! Ihr habt solide Grundlagen. Zeit für Quick Wins und konkrete KI-Implementierung!';
                 triggerConfetti();
             } else if (score >= 60) {
-                emoji = '💪';
                 title = 'Gute Basis!';
                 description = 'Mit gezielter Vorarbeit seid ihr in 4-8 Wochen startklar. Ein Readiness Assessment zeigt euch den konkreten Weg.';
             } else if (score >= 40) {
-                emoji = '📋';
                 title = 'Potenzial vorhanden!';
                 description = 'Hausaufgaben nötig - aber machbar mit der richtigen Strategie! Lasst uns über Prozesse und Quick Wins reden.';
             } else {
-                emoji = '🧹';
                 title = 'Erst aufräumen!';
                 description = 'Ehrliche Antwort: KI wäre aktuell Geldverbrennung. Aber: Mit strukturierter Vorbereitung kommt ihr da hin. Lasst uns über Basics reden.';
             }
 
-            document.getElementById('resultTitle').innerHTML = title + ' <span class="emoji">' + emoji + '</span>';
+            document.getElementById('resultTitle').textContent = title;
             document.getElementById('resultDescription').textContent = description;
         }
 
